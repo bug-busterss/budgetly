@@ -119,37 +119,36 @@ export default function Login(props: PaperProps) {
                   },
                 }}
               />
-
-            <PasswordInput
-              required
-              label='Password'
-              classNames={classes}
-              value={value}
-              onChange={() => setValue(form.values.password)}
-              onFocus={() => setFocused1(true)}
-              onBlur={() => setFocused1(false)}
-              mt='md'
-            />
-          </Stack>
-          <Group position='apart' mt='xl'>
-            <Anchor
-              component={Link}
-              type='button'
-              color='dimmed'
-              size='xs'
-              to='/register'
-            >
-              Don't have an account? Register
-            </Anchor>
-            <Button
-              variant='gradient'
-              gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
-              type='submit'
-            >
-              Login
-            </Button>
-          </Group>
-          {/* </form> */}
+              <AuthInput
+                input={PasswordInput}
+                label='Password'
+                form={{
+                  value: form.values.password,
+                  onChange(e) {
+                    form.setFieldValue('password', e.target.value);
+                  },
+                }}
+              />
+            </Stack>
+            <Group position='apart' mt='xl'>
+              <Anchor
+                component={Link}
+                type='button'
+                color='dimmed'
+                size='xs'
+                to='/register'
+              >
+                Don't have an account? Register
+              </Anchor>
+              <Button
+                variant='gradient'
+                gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
+                type='submit'
+              >
+                Login
+              </Button>
+            </Group>
+          </form>
         </Paper>
       </Center>
     </Container>
