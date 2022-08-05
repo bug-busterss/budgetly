@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   Modal,
   Button,
@@ -12,10 +12,11 @@ import { Category } from './Select';
 
 type ModalProps = {
   opened: boolean;
+  isAdd: boolean;
   setOpened: Dispatch<SetStateAction<boolean>>;
 };
 
-function Demo({ opened, setOpened }: ModalProps) {
+function Demo({ opened, isAdd, setOpened }: ModalProps) {
   const theme = useMantineTheme();
   const [expense, setexpense] = useState(false);
   return (
@@ -31,7 +32,8 @@ function Demo({ opened, setOpened }: ModalProps) {
         }
         overlayOpacity={0.55}
         overlayBlur={3}
-        title='{expense} Money'
+        // title='Add Expense'
+        title={`${isAdd ? 'Add' : 'Deduct'} Money`}
       >
         <Grid p='lg'>
           {/* <Title>Add Expense</Title> */}
