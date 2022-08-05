@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   createStyles,
   Container,
@@ -9,9 +9,8 @@ import {
   Menu,
   Tabs,
   Burger,
-  Title,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+} from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import {
   IconLogout,
   IconHeart,
@@ -22,15 +21,19 @@ import {
   IconTrash,
   IconSwitchHorizontal,
   IconChevronDown,
-} from '@tabler/icons';
+} from "@tabler/icons";
 // import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles((theme) => ({
   header: {
     paddingTop: theme.spacing.sm,
-    backgroundColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+    backgroundColor: theme.fn.variant({
+      variant: "filled",
+      color: theme.primaryColor,
+    }).background,
     borderBottom: `1px solid ${
-      theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background
+      theme.fn.variant({ variant: "filled", color: theme.primaryColor })
+        .background
     }`,
     marginBottom: 120,
   },
@@ -43,63 +46,73 @@ const useStyles = createStyles((theme) => ({
     color: theme.white,
     padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
     borderRadius: theme.radius.sm,
-    transition: 'background-color 100ms ease',
+    transition: "background-color 100ms ease",
 
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+        theme.fn.variant({ variant: "filled", color: theme.primaryColor })
+          .background,
         0.1
       ),
     },
 
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
+    [theme.fn.smallerThan("xs")]: {
+      display: "none",
     },
   },
 
   burger: {
-    [theme.fn.largerThan('xs')]: {
-      display: 'none',
+    [theme.fn.largerThan("xs")]: {
+      display: "none",
     },
   },
 
   userActive: {
     backgroundColor: theme.fn.lighten(
-      theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+      theme.fn.variant({ variant: "filled", color: theme.primaryColor })
+        .background,
       0.1
     ),
   },
 
   tabs: {
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
     },
   },
 
   tabsList: {
-    borderBottom: '0 !important',
+    borderBottom: "0 !important",
   },
 
   tab: {
     fontWeight: 500,
     height: 38,
     color: theme.white,
-    backgroundColor: 'transparent',
-    borderColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+    backgroundColor: "transparent",
+    borderColor: theme.fn.variant({
+      variant: "filled",
+      color: theme.primaryColor,
+    }).background,
 
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+        theme.fn.variant({ variant: "filled", color: theme.primaryColor })
+          .background,
         0.1
       ),
     },
 
-    '&[data-active]': {
+    "&[data-active]": {
       backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+        theme.fn.variant({ variant: "filled", color: theme.primaryColor })
+          .background,
         0.1
       ),
-      borderColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+      borderColor: theme.fn.variant({
+        variant: "filled",
+        color: theme.primaryColor,
+      }).background,
     },
   },
 }));
@@ -124,7 +137,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
     <div className={classes.header}>
       <Container className={classes.mainSection}>
         <Group position="apart">
-          <Title>Budgetly</Title>
+          <title>T</title>
           <Burger
             opened={opened}
             onClick={toggle}
@@ -142,11 +155,23 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
           >
             <Menu.Target>
               <UnstyledButton
-                className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
+                className={cx(classes.user, {
+                  [classes.userActive]: userMenuOpened,
+                })}
               >
                 <Group spacing={7}>
-                  <Avatar src={user.image} alt={user.name} radius="xl" size={20} />
-                  <Text weight={500} size="sm" sx={{ lineHeight: 1, color: theme.white }} mr={3}>
+                  <Avatar
+                    src={user.image}
+                    alt={user.name}
+                    radius="xl"
+                    size={20}
+                  />
+                  <Text
+                    weight={500}
+                    size="sm"
+                    sx={{ lineHeight: 1, color: theme.white }}
+                    mr={3}
+                  >
                     {user.name}
                   </Text>
                   <IconChevronDown size={12} stroke={1.5} />
@@ -154,18 +179,61 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              
+              <Menu.Item
+                icon={
+                  <IconHeart
+                    size={14}
+                    stroke={1.5}
+                    color={theme.colors.red[6]}
+                  />
+                }
+              >
+                Liked posts
+              </Menu.Item>
+              <Menu.Item
+                icon={
+                  <IconStar
+                    size={14}
+                    stroke={1.5}
+                    color={theme.colors.yellow[6]}
+                  />
+                }
+              >
+                Saved posts
+              </Menu.Item>
+              <Menu.Item
+                icon={
+                  <IconMessage
+                    size={14}
+                    stroke={1.5}
+                    color={theme.colors.blue[6]}
+                  />
+                }
+              >
+                Your comments
+              </Menu.Item>
+
               <Menu.Label>Settings</Menu.Label>
-              <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>Account settings</Menu.Item>
+              <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
+                Account settings
+              </Menu.Item>
               <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
                 Change account
               </Menu.Item>
-              <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>Logout</Menu.Item>
+              <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
+                Logout
+              </Menu.Item>
 
               <Menu.Divider />
 
               <Menu.Label>Danger zone</Menu.Label>
-              <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
+              <Menu.Item icon={<IconPlayerPause size={14} stroke={1.5} />}>
+                Pause subscription
+              </Menu.Item>
+              <Menu.Item
+                color="red"
+                icon={<IconTrash size={14} stroke={1.5} />}
+              >
                 Delete account
               </Menu.Item>
             </Menu.Dropdown>
