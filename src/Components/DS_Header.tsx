@@ -8,10 +8,21 @@ import {
   Container,
   Title,
   MantineProvider,
+  SegmentedControl,
+  Box,
+  useMantineColorScheme,
 } from '@mantine/core';
 import { defaultFilter } from '@mantine/core/lib/TransferList/TransferList';
 import { useDisclosure } from '@mantine/hooks';
-import { IconChevronDown } from '@tabler/icons';
+import {
+  IconChevronDown,
+  IconLogout,
+  IconMoon,
+  IconSettings,
+  IconSun,
+  IconSwitchHorizontal,
+  IconTrash,
+} from '@tabler/icons';
 // import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles(theme => ({
@@ -76,6 +87,7 @@ interface HeaderSearchProps {
 export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   // const items = links.map(link => {
 
@@ -134,7 +146,95 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
             color='#fff'
           />
         </div>
+
+        <Menu
+          width={260}
+          position='bottom-end'
+          transition='pop-top-right'
+          onClose={() => setUserMenuOpened(false)}
+          onOpen={() => setUserMenuOpened(true)}
+        >
+          {/* <Menu.Target>
+              <UnstyledButton
+                className={cx(classes.user, {
+                  [classes.userActive]: userMenuOpened,
+                })}
+              >
+                <Group spacing={7}>
+                  <Avatar
+                    src={user.image}
+                    alt={user.name}
+                    radius='xl'
+                    size={20}
+                  />
+                  <Text
+                    weight={500}
+                    size='sm'
+                    sx={{ lineHeight: 1, color: theme.white }}
+                    mr={3}
+                  >
+                    {user.name}
+                  </Text>
+                  <IconChevronDown size={12} stroke={1.5} />
+                </Group>
+              </UnstyledButton> 
+            </Menu.Target> */}
+          <Menu.Dropdown>
+            <Menu.Label>Settings</Menu.Label>
+            <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
+              Account settings
+            </Menu.Item>
+            <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
+              Change account
+            </Menu.Item>
+            <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
+              Logout
+            </Menu.Item>
+
+            <Menu.Divider />
+
+            <Menu.Label>Danger zone</Menu.Label>
+            <Menu.Item color='red' icon={<IconTrash size={14} stroke={1.5} />}>
+              Delete account
+            </Menu.Item>
+            <Menu.Divider />
+            <Menu.Divider>Theme</Menu.Divider>
+            <Menu.Item>
+              <SegmentedControl
+                value={colorScheme}
+                onChange={(value: 'light' | 'dark') => toggleColorScheme(value)}
+                data={[
+                  {
+                    value: 'light',
+                    label: (
+                      <Center>
+                        <IconSun size={16} stroke={1.5} />
+                        <Box ml={10}>Light</Box>
+                      </Center>
+                    ),
+                  },
+                  {
+                    value: 'dark',
+                    label: (
+                      <Center>
+                        <IconMoon size={16} stroke={1.5} />
+                        <Box ml={10}>Dark</Box>
+                      </Center>
+                    ),
+                  },
+                ]}
+              />
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
       </Container>
     </Header>
   );
+}
+function toggleColorScheme(value: string): void {
+  throw new Error('Function not implemented.');
+}
+
+function setUserMenuOpened(arg0: boolean): void {
+  throw new Error('Function not implemented.');
 }

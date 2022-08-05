@@ -31,6 +31,11 @@ export default function ExpenseCard() {
             </div>
             {/* DEDUCT BUTTON */}
 
+            <div>
+              <Title> ₹600</Title>
+            </div>
+            {/* DEDUCT BUTTON */}
+
             <Button
               styles={{ root: { width: '4rem', height: '4rem' } }}
               variant='gradient'
