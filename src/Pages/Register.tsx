@@ -1,5 +1,3 @@
-import { useToggle, upperFirst } from '@mantine/hooks';
-import { Category } from '../Components/Select';
 import { useForm } from '@mantine/form';
 import {
   TextInput,
@@ -18,14 +16,14 @@ import {
 import { FloatingLabelInput } from '../Components/FloatingInput';
 import { useState } from 'react';
 import { useFloatingInput } from '../hooks/useFloatingInput';
+import axios from 'axios';
 
 export function RegisterForm(props: PaperProps) {
   const form = useForm({
     initialValues: {
-      email: '',
-      name: '',
       password: '',
-      terms: true,
+      name: '',
+      username: '',
     },
 
     validate: {
@@ -40,24 +38,47 @@ export function RegisterForm(props: PaperProps) {
     floating: focused,
   });
 
-  const type = 'register';
-
   return (
     <Paper radius='md' p='xl' withBorder {...props}>
       <Text size='lg' weight={500}>
-        Welcome to Budegtly
+        Welcome to Budgetly
       </Text>
 
-      <form onSubmit={form.onSubmit(() => {})}>
+      <form
+        onSubmit={form.onSubmit(async formData => {
+          const { data } = await axios.post('http://localhost:8000/signup', {
+            name: formData.name,
+            username: formData.username,
+            password: formData.password,
+          });
+          if (!data.user) return;
+          console.log('USER SIGNED UP', data.user);
+        })}
+      >
         <Stack>
-          {type === 'register' && <FloatingLabelInput label='User Name' />}
+          <FloatingLabelInput
+            label='Name'
+            formData={{
+              value: form.values.name,
+              onChange(txt?) {
+                form.setFieldValue('name', txt as string);
+              },
+            }}
+          />
 
-          <FloatingLabelInput label='User Name' />
+          <FloatingLabelInput
+            label='Username'
+            formData={{
+              value: form.values.username,
+              onChange(txt?) {
+                form.setFieldValue('username', txt as string);
+              },
+            }}
+          />
 
           <PasswordInput
             required
             label='Password'
-            // placeholder='Your password'
             value={form.values.password}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
@@ -71,25 +92,13 @@ export function RegisterForm(props: PaperProps) {
               'Password should include at least 6 characters'
             }
           />
-
-          {type === 'register' && (
-            <Checkbox
-              label='I accept terms and conditions'
-              checked={form.values.terms}
-              onChange={event =>
-                form.setFieldValue('terms', event.currentTarget.checked)
-              }
-            />
-          )}
         </Stack>
 
         <Group position='apart' mt='xl'>
           <Anchor component='button' type='button' color='dimmed' size='xs'>
-            {type === 'register'
-              ? 'Already have an account? Login'
-              : "Don't have an account? Register"}
+            Already have an account? Login
           </Anchor>
-          <Button type='submit'>{upperFirst(type)}</Button>
+          <Button type='submit'>Register</Button>
         </Group>
       </form>
     </Paper>
