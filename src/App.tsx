@@ -2,6 +2,7 @@ import Demo from './Components/Modal';
 import { AppShell } from '@mantine/core';
 import { useState } from 'react';
 import HeaderTabsColored from './Components/DS_Header';
+import { RegisterForm } from './Pages/Register';
 
 function App() {
   const [count, setCount] = useState(0);
