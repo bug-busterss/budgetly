@@ -6,7 +6,7 @@ interface HeaderTabsProps {
   tabs: string;
 }
 
-export default function ExpenseCard({ user, tabs }: HeaderTabsProps) {
+export default function ExpenseCard() {
   return (
     <Card shadow='sm' p='lg' radius='md' withBorder>
       <Card.Section>
