@@ -1,13 +1,17 @@
-import { HTMLInputTypeAttribute, useState } from 'react';
-import { TextInput, createStyles, Grid, NumberInput } from '@mantine/core';
+import { ChangeEventHandler, useState } from 'react';
+import { TextInput, NumberInput } from '@mantine/core';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 
 interface Props {
   label: string;
   isNumber?: boolean;
+  formData?: {
+    value: string | number;
+    onChange: (txt?: string | number) => void;
+  };
 }
 
-export function FloatingLabelInput({ label, isNumber }: Props) {
+export function FloatingLabelInput({ label, isNumber, formData }: Props) {
   const [focused, setFocused] = useState(false);
   const { classes } = useFloatingInput({
     floating: focused,
@@ -24,6 +28,8 @@ export function FloatingLabelInput({ label, isNumber }: Props) {
           onBlur={() => setFocused(false)}
           mt='md'
           autoComplete='nope'
+          value={formData?.value as number}
+          onChange={num => formData?.onChange(num)}
         />
       ) : (
         <TextInput
@@ -32,6 +38,8 @@ export function FloatingLabelInput({ label, isNumber }: Props) {
           classNames={classes}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
+          value={formData?.value}
+          onChange={e => formData?.onChange(e.target.value)}
           mt='md'
           autoComplete='nope'
         />

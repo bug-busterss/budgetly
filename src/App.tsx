@@ -6,6 +6,8 @@ import { Route, Routes } from 'react-router-dom';
 import { RegisterForm } from './Pages/Register';
 import ExpenseCard from './Components/Card';
 import { Footer } from './Components/footer';
+import About from './Pages/About';
+import Login from './Pages/Login';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
             }
           />
           <Route path='/register' element={<RegisterForm />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/about' element={<About />} />
         </Routes>
         <Footer />
       </AppShell>
