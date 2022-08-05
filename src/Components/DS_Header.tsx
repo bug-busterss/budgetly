@@ -28,10 +28,7 @@ import { Link } from 'react-router-dom';
 
 const useStyles = createStyles(theme => ({
   header: {
-    backgroundColor: theme.fn.variant({
-      variant: 'filled',
-      color: theme.primaryColor,
-    }).background,
+    backgroundColor: '#862E9C',
     borderBottom: 0,
   },
 
@@ -88,7 +85,6 @@ interface HeaderSearchProps {
 export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
     <Header height={56} className={classes.header} mb={120}>
