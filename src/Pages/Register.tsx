@@ -11,6 +11,7 @@ import {
   Checkbox,
   Anchor,
   Stack,
+  Select,
 } from '@mantine/core';
 import { FloatingLabelInput } from '../Components/FloatingInput';
 import { useState } from 'react';

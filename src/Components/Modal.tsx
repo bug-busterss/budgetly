@@ -8,6 +8,7 @@ import {
   Title,
 } from '@mantine/core';
 import { FloatingLabelInput } from './FloatingInput';
+import { Category } from './Select';
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -35,6 +36,9 @@ function Demo() {
           </Grid.Col>
           <Grid.Col>
             <FloatingLabelInput label='Amount' isNumber />
+          </Grid.Col>
+          <Grid.Col>
+            <Category />
           </Grid.Col>
         </Grid>
       </Modal>
