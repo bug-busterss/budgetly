@@ -32,7 +32,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<RegisterForm />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/about' element={<About />} />
+          <Route path='/aboutus' element={<About />} />
           <Route path='/contactus' element={<Contactus />} />
         </Routes>
       </AppShell>
