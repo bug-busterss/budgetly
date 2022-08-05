@@ -25,12 +25,6 @@ export default function ExpenseCard() {
             >
               <IconPlus />
             </Button>
-
-            <div>
-              <Title>$600</Title>
-            </div>
-            {/* DEDUCT BUTTON */}
-
             <div>
               <Title> ₹600</Title>
             </div>
