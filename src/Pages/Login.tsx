@@ -108,7 +108,7 @@ export default function Login(props: PaperProps) {
               console.log(data);
             })}
           >
-            <Stack>
+            <Stack mt='xl'>
               <AuthInput
                 input={TextInput}
                 label='Username'
