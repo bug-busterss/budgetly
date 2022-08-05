@@ -1,14 +1,19 @@
+import { AppShell } from '@mantine/core'
 import { useState } from 'react'
-import './App.css'
+import HeaderTabsColored from './Components/DS_Header'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
     
-    <h1>hi</h1>
-
+    <div className="App">
+      <AppShell>
+    <HeaderTabsColored user={{
+        name: '',
+        image: ''
+      }} tabs={["Dashboard",  "Insights", "About"]} />
+      </AppShell>
     </div>  
   )
 }
