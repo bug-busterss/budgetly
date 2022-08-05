@@ -120,7 +120,6 @@ export function UserInfoIcons({
                       </Text>
                     </Group>
                   </div>
-                  <Card></Card>
                 </Group>
               </Card.Section>
             </Card>
