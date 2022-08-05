@@ -46,6 +46,14 @@ function Demo({ opened, isAdd, setOpened }: ModalProps) {
           {/* <Grid.Col>
             <Category />
           </Grid.Col> */}
+          <Grid.Col>
+            <Button
+              variant='gradient'
+              gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
+            >
+              {`${isAdd ? 'Add' : 'Deduct'} Money`}
+            </Button>
+          </Grid.Col>
         </Grid>
       </Modal>
     </>
