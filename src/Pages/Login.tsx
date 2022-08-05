@@ -127,7 +127,13 @@ export default function Login(props: PaperProps) {
             >
               Don't have an account? Register
             </Anchor>
-            <Button type='submit'>Login</Button>
+            <Button
+              variant='gradient'
+              gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
+              type='submit'
+            >
+              Login
+            </Button>
           </Group>
           {/* </form> */}
         </Paper>

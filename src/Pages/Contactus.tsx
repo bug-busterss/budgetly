@@ -139,7 +139,12 @@ export function Contactus() {
             />
 
             <Group position='right' mt='md'>
-              <Button type='submit' className={classes.control}>
+              <Button
+                type='submit'
+                variant='gradient'
+                gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
+                className={classes.control}
+              >
                 Send message
               </Button>
             </Group>

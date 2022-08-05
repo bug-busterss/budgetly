@@ -111,7 +111,13 @@ export function RegisterForm(props: PaperProps) {
               >
                 Already have an account? Login
               </Anchor>
-              <Button type='submit'>Register</Button>
+              <Button
+                variant='gradient'
+                gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
+                type='submit'
+              >
+                Register
+              </Button>
             </Group>
           </form>
         </Paper>
