@@ -3,6 +3,7 @@ import { AppShell } from '@mantine/core';
 import { useState } from 'react';
 import HeaderTabsColored from './Components/DS_Header';
 import { RegisterForm } from './Pages/Register';
+import ExpenseCard from './Components/Card';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ function App() {
           tabs={['Dashboard', 'Insights', 'About']}
         />
         <Demo />
+        <ExpenseCard />
       </AppShell>
     </div>
   );

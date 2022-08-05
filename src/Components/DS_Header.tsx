@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   useMantineColorScheme,
   SegmentedControl,
@@ -55,9 +55,9 @@ const useStyles = createStyles((theme) => ({
     color: theme.white,
     padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
     borderRadius: theme.radius.sm,
-    transition: 'background-color 100ms ease',
+    transition: "background-color 100ms ease",
 
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.fn.lighten(
         theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
           .background,
@@ -65,14 +65,14 @@ const useStyles = createStyles((theme) => ({
       ),
     },
 
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
+    [theme.fn.smallerThan("xs")]: {
+      display: "none",
     },
   },
 
   burger: {
-    [theme.fn.largerThan('xs')]: {
-      display: 'none',
+    [theme.fn.largerThan("xs")]: {
+      display: "none",
     },
   },
 
@@ -85,13 +85,13 @@ const useStyles = createStyles((theme) => ({
   },
 
   tabs: {
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
     },
   },
 
   tabsList: {
-    borderBottom: '0 !important',
+    borderBottom: "0 !important",
   },
 
   tab: {
@@ -104,7 +104,7 @@ const useStyles = createStyles((theme) => ({
       color: theme.primaryColor,
     }).background,
 
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.fn.lighten(
         theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
           .background,
@@ -112,7 +112,7 @@ const useStyles = createStyles((theme) => ({
       ),
     },
 
-    '&[data-active]': {
+    "&[data-active]": {
       backgroundColor: theme.fn.lighten(
         theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
           .background,
