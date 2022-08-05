@@ -42,13 +42,6 @@ export function RegisterForm(props: PaperProps) {
 
   return (
     <>
-      <DS_Header
-        user={{
-          name: '',
-          image: '',
-        }}
-        tabs={[]}
-      />
       <Paper radius='md' p='xl' withBorder {...props}>
         <Text size='lg' weight={500}>
           Welcome to Budgetly
