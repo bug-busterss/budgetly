@@ -1,14 +1,16 @@
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi_login.exceptions import InvalidCredentialsException
 from passlib.hash import bcrypt
 from prisma import Prisma
+from prisma.models import User
 
 from .loginManager import manager, query_user
 from .models import SignupUser
 
 app = FastAPI()
+manager.useRequest(app)
 
 origins = [
     "http://localhost",
@@ -22,6 +24,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/users/me")
+async def get_user(request: Request):
+    return {"user": request.state.user}
 
 
 @app.post("/signup")
