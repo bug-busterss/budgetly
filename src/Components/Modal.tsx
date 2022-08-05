@@ -17,7 +17,7 @@ type ModalProps = {
 
 function Demo({ opened, setOpened }: ModalProps) {
   const theme = useMantineTheme();
-
+  const [expense, setexpense] = useState(false);
   return (
     <>
       <Modal
@@ -31,7 +31,7 @@ function Demo({ opened, setOpened }: ModalProps) {
         }
         overlayOpacity={0.55}
         overlayBlur={3}
-        title='Add Expense'
+        title='{expense} Money'
       >
         <Grid p='lg'>
           {/* <Title>Add Expense</Title> */}
@@ -41,9 +41,9 @@ function Demo({ opened, setOpened }: ModalProps) {
           <Grid.Col>
             <FloatingLabelInput label='Amount' isNumber />
           </Grid.Col>
-          <Grid.Col>
+          {/* <Grid.Col>
             <Category />
-          </Grid.Col>
+          </Grid.Col> */}
         </Grid>
       </Modal>
     </>
