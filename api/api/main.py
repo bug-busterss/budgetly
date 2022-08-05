@@ -28,7 +28,8 @@ app.add_middleware(
 
 @app.get("/users/me")
 async def get_user(request: Request):
-    return {"user": request.state.user}
+    token = await manager._get_token(request)
+    return {"user": await manager.get_current_user(token), "token": token}
 
 
 @app.post("/signup")
