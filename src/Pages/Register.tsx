@@ -1,27 +1,21 @@
 import { useForm } from '@mantine/form';
 import {
-  TextInput,
   PasswordInput,
   Text,
   Paper,
   Group,
   PaperProps,
   Button,
-  Divider,
-  Checkbox,
   Anchor,
   Stack,
   Select,
   Header,
-  Center,
-  Container,
 } from '@mantine/core';
 import { FloatingLabelInput } from '../Components/FloatingInput';
 import { useState } from 'react';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 import axios from 'axios';
 import DS_Header from '../Components/DS_Header';
-import { Link } from 'react-router-dom';
 
 export function RegisterForm(props: PaperProps) {
   const form = useForm({
@@ -44,12 +38,18 @@ export function RegisterForm(props: PaperProps) {
   });
 
   return (
-    <Container>
-      <Center>
-        <Paper radius='md' p='xl' withBorder {...props}>
-          <Text size='lg' weight={500}>
-            Welcome to Budgetly
-          </Text>
+    <>
+      <DS_Header
+        user={{
+          name: '',
+          image: '',
+        }}
+        tabs={[]}
+      />
+      <Paper radius='md' p='xl' withBorder {...props}>
+        <Text size='lg' weight={500}>
+          Welcome to Budgetly
+        </Text>
 
           <form
             onSubmit={form.onSubmit(async formData => {
