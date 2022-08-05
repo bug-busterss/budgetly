@@ -44,16 +44,16 @@ export function Footer() {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <Group spacing={0} className={classes.links} position='right' noWrap>
+        <Group spacing={10} className={classes.links}>
           <Title>Budgetly</Title>
-          <ActionIcon size={30}>
-            <IconBrandTwitter size={18} stroke={1.5} />
+          <ActionIcon size={40}>
+            <IconBrandTwitter size={30} stroke={1.5} />
           </ActionIcon>
-          <ActionIcon size={30}>
-            <IconBrandYoutube size={18} stroke={1.5} />
+          <ActionIcon size={40}>
+            <IconBrandYoutube size={30} stroke={1.5} />
           </ActionIcon>
-          <ActionIcon size={30}>
-            <IconBrandInstagram size={18} stroke={1.5} />
+          <ActionIcon size={40}>
+            <IconBrandInstagram size={30} stroke={1.5} />
           </ActionIcon>
         </Group>
       </Container>
