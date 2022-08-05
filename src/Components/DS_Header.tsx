@@ -9,6 +9,7 @@ import {
   Menu,
   Tabs,
   Burger,
+  Title,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
@@ -123,7 +124,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
     <div className={classes.header}>
       <Container className={classes.mainSection}>
         <Group position="apart">
-          <title>T</title>
+          <Title>Budgetly</Title>
           <Burger
             opened={opened}
             onClick={toggle}
@@ -153,16 +154,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              <Menu.Item icon={<IconHeart size={14} stroke={1.5} color={theme.colors.red[6]} />}>
-                Liked posts
-              </Menu.Item>
-              <Menu.Item icon={<IconStar size={14} stroke={1.5} color={theme.colors.yellow[6]} />}>
-                Saved posts
-              </Menu.Item>
-              <Menu.Item icon={<IconMessage size={14} stroke={1.5} color={theme.colors.blue[6]} />}>
-                Your comments
-              </Menu.Item>
-
+              
               <Menu.Label>Settings</Menu.Label>
               <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>Account settings</Menu.Item>
               <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
@@ -173,9 +165,6 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
               <Menu.Divider />
 
               <Menu.Label>Danger zone</Menu.Label>
-              <Menu.Item icon={<IconPlayerPause size={14} stroke={1.5} />}>
-                Pause subscription
-              </Menu.Item>
               <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
                 Delete account
               </Menu.Item>
