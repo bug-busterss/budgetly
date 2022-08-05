@@ -10,7 +10,7 @@ export default function Home() {
       <Container>
         {isLoading ? (
           <Center>
-            <Loader color='violet' size='xl' mt={350} />
+            <Loader color='grape' size='xl' mt={350} />
           </Center>
         ) : (
           <>
