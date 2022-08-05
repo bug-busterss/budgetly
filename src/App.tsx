@@ -3,6 +3,8 @@ import { AppShell } from '@mantine/core';
 import { useState } from 'react';
 import HeaderTabsColored from './Components/DS_Header';
 import { Route, Routes } from 'react-router-dom';
+import { RegisterForm } from './Pages/Register';
+import ExpenseCard from './Components/Card';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,6 +24,15 @@ function App() {
             <Demo />
           </Route>
         </Routes>
+        <HeaderTabsColored
+          user={{
+            name: '',
+            image: '',
+          }}
+          tabs={['Dashboard', 'Insights', 'About']}
+        />
+        <Demo />
+        <ExpenseCard />
       </AppShell>
     </div>
   );
