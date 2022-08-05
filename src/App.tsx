@@ -5,6 +5,7 @@ import HeaderTabsColored from './Components/DS_Header';
 import { Route, Routes } from 'react-router-dom';
 import { RegisterForm } from './Pages/Register';
 import ExpenseCard from './Components/Card';
+import { Footer } from './Components/footer';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           />
           <Route path='/register' element={<RegisterForm />} />
         </Routes>
+        <Footer />
       </AppShell>
     </div>
   );
