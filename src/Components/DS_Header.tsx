@@ -135,7 +135,7 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
                   Logout
                 </UnstyledButton>
                 <Avatar
-                  src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${auth?.user?.user?.name}`}
+                  src={`https://avatars.dicebear.com/api/initials/${auth?.user?.user?.name}.svg`}
                   radius='xl'
                 />
               </>
