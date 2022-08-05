@@ -5,7 +5,7 @@ import HeaderTabsColored from './Components/DS_Header';
 import { Route, Routes } from 'react-router-dom';
 import { RegisterForm } from './Pages/Register';
 import ExpenseCard from './Components/Card';
-import { Footer } from './Components/footer';
+import { Footer } from './Components/Footer';
 import About from './Pages/About';
 import Login from './Pages/Login';
 
