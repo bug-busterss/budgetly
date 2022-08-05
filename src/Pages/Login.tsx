@@ -1,20 +1,15 @@
-import { useToggle, upperFirst } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 import {
   TextInput,
   PasswordInput,
   Text,
   Paper,
-  Group,
   PaperProps,
-  Button,
-  Divider,
-  Checkbox,
-  Anchor,
   Stack,
   createStyles,
 } from '@mantine/core';
 import { useState } from 'react';
+import axios from 'axios';
 
 const useStyles = createStyles(
   (
@@ -72,9 +67,7 @@ export default function Login(props: PaperProps) {
   const form = useForm({
     initialValues: {
       username: '',
-      name: '',
       password: '',
-      terms: true,
     },
 
     validate: {
@@ -93,31 +86,42 @@ export default function Login(props: PaperProps) {
           Welcome to Budgetly
         </Text>
 
-        {/* <form onSubmit={form.onSubmit(() => {})}> */}
-        <Stack>
-          <TextInput
-            label='Username'
-            required
-            classNames={classes}
-            value={value}
-            onChange={() => setValue(form.values.username)}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            mt='md'
-          />
+        <form
+          onSubmit={form.onSubmit(async formData => {
+            const { data } = await axios.postForm(
+              'http://localhost:8000/login',
+              {
+                username: formData.username,
+                password: formData.password,
+              }
+            );
+            console.log(data);
+          })}
+        >
+          <Stack>
+            <TextInput
+              label='Username'
+              required
+              classNames={classes}
+              value={value}
+              onChange={() => setValue(form.values.username)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              mt='md'
+            />
 
-          <PasswordInput
-            required
-            label='Password'
-            classNames={classes}
-            value={value}
-            onChange={() => setValue(form.values.password)}
-            onFocus={() => setFocused1(true)}
-            onBlur={() => setFocused1(false)}
-            mt='md'
-          />
-        </Stack>
-        {/* </form> */}
+            <PasswordInput
+              required
+              label='Password'
+              classNames={classes}
+              value={value}
+              onChange={() => setValue(form.values.password)}
+              onFocus={() => setFocused1(true)}
+              onBlur={() => setFocused1(false)}
+              mt='md'
+            />
+          </Stack>
+        </form>
       </Paper>
     </>
   );
