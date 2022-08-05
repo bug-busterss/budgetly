@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   useMantineColorScheme,
   SegmentedControl,
@@ -33,7 +33,7 @@ import {
 
 // import { MantineLogo } from '@mantine/ds';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(theme => ({
   header: {
     paddingTop: theme.spacing.sm,
     backgroundColor: theme.fn.variant({
@@ -55,9 +55,9 @@ const useStyles = createStyles((theme) => ({
     color: theme.white,
     padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
     borderRadius: theme.radius.sm,
-    transition: "background-color 100ms ease",
+    transition: 'background-color 100ms ease',
 
-    "&:hover": {
+    '&:hover': {
       backgroundColor: theme.fn.lighten(
         theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
           .background,
@@ -65,14 +65,14 @@ const useStyles = createStyles((theme) => ({
       ),
     },
 
-    [theme.fn.smallerThan("xs")]: {
-      display: "none",
+    [theme.fn.smallerThan('xs')]: {
+      display: 'none',
     },
   },
 
   burger: {
-    [theme.fn.largerThan("xs")]: {
-      display: "none",
+    [theme.fn.largerThan('xs')]: {
+      display: 'none',
     },
   },
 
@@ -85,13 +85,13 @@ const useStyles = createStyles((theme) => ({
   },
 
   tabs: {
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
     },
   },
 
   tabsList: {
-    borderBottom: "0 !important",
+    borderBottom: '0 !important',
   },
 
   tab: {
@@ -104,7 +104,7 @@ const useStyles = createStyles((theme) => ({
       color: theme.primaryColor,
     }).background,
 
-    "&:hover": {
+    '&:hover': {
       backgroundColor: theme.fn.lighten(
         theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
           .background,
@@ -112,7 +112,7 @@ const useStyles = createStyles((theme) => ({
       ),
     },
 
-    "&[data-active]": {
+    '&[data-active]': {
       backgroundColor: theme.fn.lighten(
         theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
           .background,
@@ -122,6 +122,25 @@ const useStyles = createStyles((theme) => ({
         variant: 'filled',
         color: theme.primaryColor,
       }).background,
+    },
+  },
+
+  link: {
+    display: 'block',
+    lineHeight: 1,
+    padding: '8px 12px',
+    borderRadius: theme.radius.sm,
+    textDecoration: 'none',
+    color: theme.white,
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+
+    '&:hover': {
+      backgroundColor: theme.fn.lighten(
+        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
+          .background,
+        0.1
+      ),
     },
   },
 }));
@@ -137,7 +156,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
   const [userMenuOpened, setUserMenuOpened] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
-  const items = tabs.map((tab) => (
+  const items = tabs.map(tab => (
     <Tabs.Tab value={tab} key={tab}>
       {tab}
     </Tabs.Tab>
@@ -156,6 +175,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
             color={theme.white}
           />
 
+          <a className={classes.link}>Register</a>
           <Menu
             width={260}
             position='bottom-end'
@@ -163,7 +183,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
             onClose={() => setUserMenuOpened(false)}
             onOpen={() => setUserMenuOpened(true)}
           >
-            <Menu.Target>
+            {/* <Menu.Target>
               <UnstyledButton
                 className={cx(classes.user, {
                   [classes.userActive]: userMenuOpened,
@@ -186,8 +206,8 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
                   </Text>
                   <IconChevronDown size={12} stroke={1.5} />
                 </Group>
-              </UnstyledButton>
-            </Menu.Target>
+              </UnstyledButton> 
+            </Menu.Target> */}
             <Menu.Dropdown>
               <Menu.Label>Settings</Menu.Label>
               <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
