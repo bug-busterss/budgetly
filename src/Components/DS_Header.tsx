@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   useMantineColorScheme,
   SegmentedControl,
@@ -174,8 +175,9 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
             size='sm'
             color={theme.white}
           />
-
-          <a className={classes.link}>Register</a>
+          <Link to='/register' className={classes.link}>
+            Register
+          </Link>
           <Menu
             width={260}
             position='bottom-end'
