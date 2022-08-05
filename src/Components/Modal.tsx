@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   Modal,
   Button,
@@ -8,11 +8,17 @@ import {
   Title,
 } from '@mantine/core';
 import { FloatingLabelInput } from './FloatingInput';
+import { Category } from './Select';
 
-function Demo() {
-  const [opened, setOpened] = useState(false);
+type ModalProps = {
+  opened: boolean;
+  isAdd: boolean;
+  setOpened: Dispatch<SetStateAction<boolean>>;
+};
+
+function Demo({ opened, isAdd, setOpened }: ModalProps) {
   const theme = useMantineTheme();
-
+  const [expense, setexpense] = useState(false);
   return (
     <>
       <Modal
@@ -26,7 +32,8 @@ function Demo() {
         }
         overlayOpacity={0.55}
         overlayBlur={3}
-        title='Add Expense'
+        // title='Add Expense'
+        title={`${isAdd ? 'Add' : 'Deduct'} Money`}
       >
         <Grid p='lg'>
           {/* <Title>Add Expense</Title> */}
@@ -36,12 +43,11 @@ function Demo() {
           <Grid.Col>
             <FloatingLabelInput label='Amount' isNumber />
           </Grid.Col>
+          {/* <Grid.Col>
+            <Category />
+          </Grid.Col> */}
         </Grid>
       </Modal>
-
-      <Group position='center'>
-        <Button onClick={() => setOpened(true)}>Open Modal</Button>
-      </Group>
     </>
   );
 }

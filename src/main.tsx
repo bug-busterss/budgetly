@@ -7,9 +7,11 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import useGoogleFonts from 'use-google-fonts';
 import './index.css';
 
 const Main = () => {
+  useGoogleFonts([['Poppins', '500']]);
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
@@ -20,7 +22,9 @@ const Main = () => {
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
       >
-        <MantineProvider>
+        <MantineProvider
+          theme={{ fontFamily: 'Poppins', headings: { fontFamily: 'Poppins' } }}
+        >
           <BrowserRouter>
             <App />
           </BrowserRouter>
