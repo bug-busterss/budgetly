@@ -27,7 +27,6 @@ function App() {
                   tabs={['Dashboard', 'Insights', 'About']}
                 />
                 <Container>
-                  <Demo />
                   <ExpenseCard />
                 </Container>
               </>

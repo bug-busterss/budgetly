@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import {
   Modal,
   Button,
@@ -10,8 +10,12 @@ import {
 import { FloatingLabelInput } from './FloatingInput';
 import { Category } from './Select';
 
-function Demo() {
-  const [opened, setOpened] = useState(false);
+type ModalProps = {
+  opened: boolean;
+  setOpened: Dispatch<SetStateAction<boolean>>;
+};
+
+function Demo({ opened, setOpened }: ModalProps) {
   const theme = useMantineTheme();
 
   return (
@@ -42,10 +46,6 @@ function Demo() {
           </Grid.Col>
         </Grid>
       </Modal>
-
-      <Group position='center'>
-        <Button onClick={() => setOpened(true)}>Open Modal</Button>
-      </Group>
     </>
   );
 }
