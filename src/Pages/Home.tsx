@@ -1,4 +1,4 @@
-import { Container, Title } from '@mantine/core';
+import { Center, Container, Loader, Title } from '@mantine/core';
 import ExpenseCard from '../Components/Card';
 import HistoryCard from '../Components/HistoryCard';
 import { useAuth } from '../hooks/useAuth';
@@ -9,7 +9,9 @@ export default function Home() {
     <>
       <Container>
         {isLoading ? (
-          <h1>Loading...</h1>
+          <Center>
+            <Loader color='violet' size='xl' mt={350} />
+          </Center>
         ) : (
           <>
             {/* https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=Usman */}
