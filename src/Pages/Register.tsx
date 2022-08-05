@@ -1,24 +1,18 @@
 import { useForm } from '@mantine/form';
 import {
-  TextInput,
   PasswordInput,
   Text,
   Paper,
   Group,
   PaperProps,
   Button,
-  Divider,
-  Checkbox,
   Anchor,
   Stack,
-  Select,
-  Header,
 } from '@mantine/core';
 import { FloatingLabelInput } from '../Components/FloatingInput';
 import { useState } from 'react';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 import axios from 'axios';
-import DS_Header from '../Components/DS_Header';
 
 export function RegisterForm(props: PaperProps) {
   const form = useForm({
@@ -42,13 +36,6 @@ export function RegisterForm(props: PaperProps) {
 
   return (
     <>
-      <DS_Header
-        user={{
-          name: '',
-          image: '',
-        }}
-        tabs={[]}
-      />
       <Paper radius='md' p='xl' withBorder {...props}>
         <Text size='lg' weight={500}>
           Welcome to Budgetly

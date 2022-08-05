@@ -89,40 +89,6 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
-  // const items = links.map(link => {
-
-  //   if (menuItems) {
-  //     return (
-  //       <Menu>
-  //         <Menu.Target>
-  //           <a
-  //             href={link.link}
-  //             className={classes.link}
-  //             onClick={event => event.preventDefault()}
-  //           >
-  //             <Center>
-  //               <span className={classes.linkLabel}>{link.label}</span>
-  //               <IconChevronDown size={12} stroke={1.5} />
-  //             </Center>
-  //           </a>
-  //         </Menu.Target>
-  //         <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-  //       </Menu>
-  //     );
-  //   }
-
-  //   return (
-  //     <a
-  //       key={link.label}
-  //       href={link.link}
-  //       className={classes.link}
-  //       onClick={event => event.preventDefault()}
-  //     >
-  //       {link.label}
-  //     </a>
-  //   );
-  // });
-
   return (
     <Header height={56} className={classes.header} mb={120}>
       <Container>
