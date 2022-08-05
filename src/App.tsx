@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <AppShell>
-        <Demo />
         <HeaderTabsColored
           user={{
             name: "",
@@ -17,6 +16,7 @@ function App() {
           }}
           tabs={["Dashboard", "Insights", "About"]}
         />
+        <Demo />
       </AppShell>
     </div>
   );
