@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   useMantineColorScheme,
   SegmentedControl,
@@ -124,6 +125,25 @@ const useStyles = createStyles(theme => ({
       }).background,
     },
   },
+
+  link: {
+    display: 'block',
+    lineHeight: 1,
+    padding: '8px 12px',
+    borderRadius: theme.radius.sm,
+    textDecoration: 'none',
+    color: theme.white,
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+
+    '&:hover': {
+      backgroundColor: theme.fn.lighten(
+        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
+          .background,
+        0.1
+      ),
+    },
+  },
 }));
 
 interface HeaderTabsProps {
@@ -155,7 +175,9 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
             size='sm'
             color={theme.white}
           />
-
+          <Link to='/register' className={classes.link}>
+            Register
+          </Link>
           <Menu
             width={260}
             position='bottom-end'
@@ -163,7 +185,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
             onClose={() => setUserMenuOpened(false)}
             onOpen={() => setUserMenuOpened(true)}
           >
-            <Menu.Target>
+            {/* <Menu.Target>
               <UnstyledButton
                 className={cx(classes.user, {
                   [classes.userActive]: userMenuOpened,
@@ -186,8 +208,8 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
                   </Text>
                   <IconChevronDown size={12} stroke={1.5} />
                 </Group>
-              </UnstyledButton>
-            </Menu.Target>
+              </UnstyledButton> 
+            </Menu.Target> */}
             <Menu.Dropdown>
               <Menu.Label>Settings</Menu.Label>
               <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
