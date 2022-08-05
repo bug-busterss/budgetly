@@ -83,8 +83,8 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   const { classes } = useStyles();
 
   return (
-    <Header height={56} className={classes.header} mb={120}>
-      <Container>
+    <Header height={76} className={classes.header} mb={120} p='10px'>
+      <Container fluid>
         <div className={classes.inner}>
           <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
             Budgetly
