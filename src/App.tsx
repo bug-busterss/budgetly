@@ -1,5 +1,5 @@
 import Demo from './Components/Modal';
-import { AppShell } from '@mantine/core';
+import { AppShell, Container } from '@mantine/core';
 import { useState } from 'react';
 import HeaderTabsColored from './Components/DS_Header';
 import { Route, Routes } from 'react-router-dom';
@@ -22,8 +22,10 @@ function App() {
                   }}
                   tabs={['Dashboard', 'Insights', 'About']}
                 />
-                <Demo />
-                <ExpenseCard />
+                <Container>
+                  <Demo />
+                  <ExpenseCard />
+                </Container>
               </>
             }
           />
