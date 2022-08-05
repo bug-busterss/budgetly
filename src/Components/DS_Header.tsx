@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import {
+  useMantineColorScheme,
+  SegmentedControl,
+  Group,
+  Center,
+  Box,
   createStyles,
   Container,
   Avatar,
   UnstyledButton,
-  Group,
   Text,
   Menu,
   Tabs,
@@ -12,7 +16,10 @@ import {
   Title,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+
 import {
+  IconSun,
+  IconMoon,
   IconLogout,
   IconHeart,
   IconStar,
@@ -23,14 +30,19 @@ import {
   IconSwitchHorizontal,
   IconChevronDown,
 } from '@tabler/icons';
+
 // import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles((theme) => ({
   header: {
     paddingTop: theme.spacing.sm,
-    backgroundColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+    backgroundColor: theme.fn.variant({
+      variant: 'filled',
+      color: theme.primaryColor,
+    }).background,
     borderBottom: `1px solid ${
-      theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background
+      theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
+        .background
     }`,
     marginBottom: 120,
   },
@@ -47,7 +59,8 @@ const useStyles = createStyles((theme) => ({
 
     '&:hover': {
       backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
+          .background,
         0.1
       ),
     },
@@ -65,7 +78,8 @@ const useStyles = createStyles((theme) => ({
 
   userActive: {
     backgroundColor: theme.fn.lighten(
-      theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+      theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
+        .background,
       0.1
     ),
   },
@@ -85,21 +99,29 @@ const useStyles = createStyles((theme) => ({
     height: 38,
     color: theme.white,
     backgroundColor: 'transparent',
-    borderColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+    borderColor: theme.fn.variant({
+      variant: 'filled',
+      color: theme.primaryColor,
+    }).background,
 
     '&:hover': {
       backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
+          .background,
         0.1
       ),
     },
 
     '&[data-active]': {
       backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
+          .background,
         0.1
       ),
-      borderColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+      borderColor: theme.fn.variant({
+        variant: 'filled',
+        color: theme.primaryColor,
+      }).background,
     },
   },
 }));
@@ -113,6 +135,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
   const { classes, theme, cx } = useStyles();
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const items = tabs.map((tab) => (
     <Tabs.Tab value={tab} key={tab}>
@@ -123,30 +146,42 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
   return (
     <div className={classes.header}>
       <Container className={classes.mainSection}>
-        <Group position="apart">
+        <Group position='apart'>
           <Title>Budgetly</Title>
           <Burger
             opened={opened}
             onClick={toggle}
             className={classes.burger}
-            size="sm"
+            size='sm'
             color={theme.white}
           />
 
           <Menu
             width={260}
-            position="bottom-end"
-            transition="pop-top-right"
+            position='bottom-end'
+            transition='pop-top-right'
             onClose={() => setUserMenuOpened(false)}
             onOpen={() => setUserMenuOpened(true)}
           >
             <Menu.Target>
               <UnstyledButton
-                className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
+                className={cx(classes.user, {
+                  [classes.userActive]: userMenuOpened,
+                })}
               >
                 <Group spacing={7}>
-                  <Avatar src={user.image} alt={user.name} radius="xl" size={20} />
-                  <Text weight={500} size="sm" sx={{ lineHeight: 1, color: theme.white }} mr={3}>
+                  <Avatar
+                    src={user.image}
+                    alt={user.name}
+                    radius='xl'
+                    size={20}
+                  />
+                  <Text
+                    weight={500}
+                    size='sm'
+                    sx={{ lineHeight: 1, color: theme.white }}
+                    mr={3}
+                  >
                     {user.name}
                   </Text>
                   <IconChevronDown size={12} stroke={1.5} />
@@ -154,19 +189,55 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              
               <Menu.Label>Settings</Menu.Label>
-              <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>Account settings</Menu.Item>
+              <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
+                Account settings
+              </Menu.Item>
               <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
                 Change account
               </Menu.Item>
-              <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>Logout</Menu.Item>
+              <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
+                Logout
+              </Menu.Item>
 
               <Menu.Divider />
 
               <Menu.Label>Danger zone</Menu.Label>
-              <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
+              <Menu.Item
+                color='red'
+                icon={<IconTrash size={14} stroke={1.5} />}
+              >
                 Delete account
+              </Menu.Item>
+              <Menu.Divider />
+              <Menu.Divider>Theme</Menu.Divider>
+              <Menu.Item>
+                <SegmentedControl
+                  value={colorScheme}
+                  onChange={(value: 'light' | 'dark') =>
+                    toggleColorScheme(value)
+                  }
+                  data={[
+                    {
+                      value: 'light',
+                      label: (
+                        <Center>
+                          <IconSun size={16} stroke={1.5} />
+                          <Box ml={10}>Light</Box>
+                        </Center>
+                      ),
+                    },
+                    {
+                      value: 'dark',
+                      label: (
+                        <Center>
+                          <IconMoon size={16} stroke={1.5} />
+                          <Box ml={10}>Dark</Box>
+                        </Center>
+                      ),
+                    },
+                  ]}
+                />
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
@@ -174,7 +245,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
       </Container>
       <Container>
         <Tabs
-          variant="outline"
+          variant='outline'
           classNames={{
             root: classes.tabs,
             tabsList: classes.tabsList,
