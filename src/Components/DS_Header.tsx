@@ -175,9 +175,7 @@ export default function HeaderTabsColored({ user, tabs }: HeaderTabsProps) {
             size='sm'
             color={theme.white}
           />
-          <Link to='/register' className={classes.link}>
-            Register
-          </Link>
+
           <Menu
             width={260}
             position='bottom-end'
