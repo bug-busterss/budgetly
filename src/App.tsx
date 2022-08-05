@@ -1,15 +1,11 @@
 import Demo from './Components/Modal';
 import { AppShell, Container, Title } from '@mantine/core';
-import { useState } from 'react';
 import HeaderTabsColored from './Components/DS_Header';
 import { Route, Routes } from 'react-router-dom';
 import { RegisterForm } from './Pages/Register';
-import ExpenseCard from './Components/Card';
-import { Footer } from './Components/Footer';
 import About from './Pages/About';
 import Login from './Pages/Login';
 import { Contactus } from './Pages/Contactus';
-import HistoryCard from './Components/HistoryCard';
 import Home from './Pages/Home';
 
 function App() {
