@@ -13,26 +13,24 @@ function App() {
     <div className='App'>
       <AppShell>
         <Routes>
-          <Route path='/'>
-            <HeaderTabsColored
-              user={{
-                name: '',
-                image: '',
-              }}
-              tabs={['Dashboard', 'Insights', 'About']}
-            />
-            <Demo />
-          </Route>
+          <Route
+            path='/'
+            element={
+              <>
+                <HeaderTabsColored
+                  user={{
+                    name: '',
+                    image: '',
+                  }}
+                  tabs={['Dashboard', 'Insights', 'About']}
+                />
+                <Demo />
+                <ExpenseCard />
+              </>
+            }
+          />
+          <Route path='/register' element={<RegisterForm />} />
         </Routes>
-        <HeaderTabsColored
-          user={{
-            name: '',
-            image: '',
-          }}
-          tabs={['Dashboard', 'Insights', 'About']}
-        />
-        <Demo />
-        <ExpenseCard />
       </AppShell>
     </div>
   );
