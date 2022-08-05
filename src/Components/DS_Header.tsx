@@ -12,6 +12,9 @@ import {
   Box,
   useMantineColorScheme,
   Avatar,
+  Button,
+  Text,
+  Anchor,
 } from '@mantine/core';
 import { defaultFilter } from '@mantine/core/lib/TransferList/TransferList';
 import { useDisclosure } from '@mantine/hooks';
@@ -24,7 +27,8 @@ import {
   IconSwitchHorizontal,
   IconTrash,
 } from '@tabler/icons';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 // import { MantineLogo } from '@mantine/ds';
 
@@ -84,6 +88,18 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
   const { auth, isLoading } = useAuth();
+  const [authLinks, setAuthLinks] = useState(links);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!auth) return;
+    setAuthLinks(authLinks.filter(item => item.link !== '/login'));
+  }, [auth]);
+
+  function logoutUser() {
+    localStorage.removeItem('user');
+    navigate('/login');
+  }
 
   return (
     <Header height={76} className={classes.header} mb={120} p='10px'>
@@ -93,7 +109,7 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
             Budgetly
           </Title>
           <Group spacing={5} className={classes.links}>
-            {links.map(item => (
+            {authLinks.map(item => (
               <Link
                 key={item.label}
                 to={`${item.link}`}
@@ -102,6 +118,11 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
                 {`${item.label}`}
               </Link>
             ))}
+            {auth && (
+              <Anchor className={classes.link} onClick={logoutUser}>
+                Logout
+              </Anchor>
+            )}
             {!isLoading && (
               <Avatar
                 src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${auth?.user.user.name}`}
