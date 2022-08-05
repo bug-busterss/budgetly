@@ -1,5 +1,5 @@
 import Demo from './Components/Modal';
-import { AppShell, Container } from '@mantine/core';
+import { AppShell, Container, Title } from '@mantine/core';
 import { useState } from 'react';
 import HeaderTabsColored from './Components/DS_Header';
 import { Route, Routes } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { Footer } from './Components/Footer';
 import About from './Pages/About';
 import Login from './Pages/Login';
 import { Contactus } from './Pages/Contactus';
+import HistoryCard from './Components/HistoryCard';
 
 function App() {
   return (
@@ -28,6 +29,10 @@ function App() {
                 />
                 <Container>
                   <ExpenseCard />
+                  <Title mt='lg'>History</Title>
+                  <HistoryCard />
+                  <HistoryCard />
+                  <HistoryCard />
                 </Container>
               </>
             }
