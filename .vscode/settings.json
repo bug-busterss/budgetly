@@ -3,5 +3,6 @@
   "[javascript][javascriptreact][typescript][typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.detectIndentation": true
+  "editor.detectIndentation": true,
+  "python.formatting.provider": "black"
 }
