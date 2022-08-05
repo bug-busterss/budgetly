@@ -13,6 +13,7 @@ import {
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import AuthInput from '../Components/AuthInput';
 
 const useStyles = createStyles(
   (
@@ -29,18 +30,22 @@ const useStyles = createStyles(
       top: 7,
       left: theme.spacing.sm,
       pointerEvents: 'none',
-      color: floating
-        ? theme.colorScheme === 'dark'
-          ? theme.white
-          : theme.black
-        : theme.colorScheme === 'dark'
-        ? theme.colors.dark[3]
-        : theme.colors.gray[5],
+      color:
+        floating || floating1
+          ? theme.colorScheme === 'dark'
+            ? theme.white
+            : theme.black
+          : theme.colorScheme === 'dark'
+          ? theme.colors.dark[3]
+          : theme.colors.gray[5],
       transition:
         'transform 150ms ease, color 150ms ease, font-size 150ms ease',
-      transform: floating ? `translate(-${theme.spacing.sm}px, -28px)` : 'none',
-      fontSize: floating ? theme.fontSizes.xs : theme.fontSizes.sm,
-      fontWeight: floating ? 500 : 400,
+      transform:
+        floating || floating1
+          ? `translate(-${theme.spacing.sm}px, -28px)`
+          : 'none',
+      fontSize: floating || floating1 ? theme.fontSizes.xs : theme.fontSizes.sm,
+      fontWeight: floating || floating1 ? 500 : 400,
     },
 
     required: {
@@ -61,12 +66,6 @@ export default function Login(props: PaperProps) {
   const [focused, setFocused] = useState(false);
   const [focused1, setFocused1] = useState(false);
 
-  const [value, setValue] = useState('');
-  const { classes } = useStyles({
-    floating: value.trim().length !== 0 || focused,
-    floating1: value.trim().length !== 0 || focused1,
-  });
-
   const form = useForm({
     initialValues: {
       username: '',
@@ -80,6 +79,10 @@ export default function Login(props: PaperProps) {
           ? 'Password should include at least 6 characters'
           : null,
     },
+  });
+  const { classes } = useStyles({
+    floating: form.values.username.trim() !== '' || focused,
+    floating1: form.values.password.trim() !== '' || focused1,
   });
 
   return (
@@ -103,26 +106,26 @@ export default function Login(props: PaperProps) {
             })}
           >
             <Stack>
-              <TextInput
+              <AuthInput
+                input={TextInput}
                 label='Username'
-                required
-                classNames={classes}
-                value={value}
-                onChange={() => setValue(form.values.username)}
-                onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
-                mt='md'
+                form={{
+                  value: form.values.username,
+                  onChange(e) {
+                    form.setFieldValue('username', e.target.value);
+                  },
+                }}
               />
 
-              <PasswordInput
-                required
+              <AuthInput
+                input={TextInput}
                 label='Password'
-                classNames={classes}
-                value={value}
-                onChange={() => setValue(form.values.password)}
-                onFocus={() => setFocused1(true)}
-                onBlur={() => setFocused1(false)}
-                mt='md'
+                form={{
+                  value: form.values.password,
+                  onChange(e) {
+                    form.setFieldValue('password', e.target.value);
+                  },
+                }}
               />
             </Stack>
           </form>
