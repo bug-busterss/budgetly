@@ -15,6 +15,7 @@ import {
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import AuthInput from '../Components/AuthInput';
+import { getCurentUser } from '../utils/getCurrentUser';
 
 export default function Login(props: PaperProps) {
   const form = useForm({
@@ -26,7 +27,7 @@ export default function Login(props: PaperProps) {
     validate: {
       //   email: val => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
       password: val =>
-        val.length <= 6
+        val.length <= 4
           ? 'Password should include at least 6 characters'
           : null,
     },
@@ -49,29 +50,20 @@ export default function Login(props: PaperProps) {
                   password: formData.password,
                 }
               );
-              console.log(data);
+              const user = await getCurentUser(data['access_token']);
+              localStorage.setItem('user', JSON.stringify(user));
             })}
           >
             <Stack mt='xl'>
               <AuthInput
                 input={TextInput}
                 label='Username'
-                form={{
-                  value: form.values.username,
-                  onChange(e) {
-                    form.setFieldValue('username', e.target.value);
-                  },
-                }}
+                {...form.getInputProps('username')}
               />
               <AuthInput
                 input={PasswordInput}
                 label='Password'
-                form={{
-                  value: form.values.password,
-                  onChange(e) {
-                    form.setFieldValue('password', e.target.value);
-                  },
-                }}
+                {...form.getInputProps('password')}
               />
             </Stack>
             <Group position='apart' mt='xl'>

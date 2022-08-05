@@ -1,4 +1,3 @@
-import Demo from './Components/Modal';
 import { AppShell, Container, Title } from '@mantine/core';
 import HeaderTabsColored from './Components/DS_Header';
 import { Route, Routes } from 'react-router-dom';
@@ -25,6 +24,10 @@ function App() {
             {
               label: 'About',
               link: '/aboutus',
+            },
+            {
+              label: 'Signin/Signup',
+              link: '/login',
             },
           ]}
         />
