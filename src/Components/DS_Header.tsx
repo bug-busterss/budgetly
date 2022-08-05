@@ -28,10 +28,7 @@ import { Link } from 'react-router-dom';
 
 const useStyles = createStyles(theme => ({
   header: {
-    backgroundColor: theme.fn.variant({
-      variant: 'filled',
-      color: theme.primaryColor,
-    }).background,
+    backgroundColor: '#862E9C',
     borderBottom: 0,
   },
 
@@ -65,11 +62,7 @@ const useStyles = createStyles(theme => ({
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
-          .background,
-        0.1
-      ),
+      backgroundColor: '#AE3EC9',
     },
   },
 
@@ -88,19 +81,21 @@ interface HeaderSearchProps {
 export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
-    <Header height={56} className={classes.header} mb={120}>
-      <Container>
+    <Header height={76} className={classes.header} mb={120} p='10px'>
+      <Container fluid>
         <div className={classes.inner}>
-          <Title style={{ fontFamily: 'Poppins' }}>Budgetly</Title>
+          <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
+            Budgetly
+          </Title>
           <Group spacing={5} className={classes.links}>
             {links.map(item => (
-              // <a key={item.label} href={item.link} className={classes.link}>
-              //   {item.label}
-              // </a>
-              <Link to={`${item.link}`} className={classes.link}>
+              <Link
+                key={item.label}
+                to={`${item.link}`}
+                className={classes.link}
+              >
                 {`${item.label}`}
               </Link>
             ))}

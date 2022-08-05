@@ -1,22 +1,20 @@
-import { useToggle, upperFirst } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 import {
   TextInput,
   PasswordInput,
   Text,
   Paper,
-  Group,
   PaperProps,
-  Button,
-  Divider,
-  Checkbox,
-  Anchor,
   Stack,
   createStyles,
   Container,
   Center,
+  Anchor,
+  Group,
+  Button,
 } from '@mantine/core';
 import { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const useStyles = createStyles(
@@ -75,9 +73,7 @@ export default function Login(props: PaperProps) {
   const form = useForm({
     initialValues: {
       username: '',
-      name: '',
       password: '',
-      terms: true,
     },
 
     validate: {
