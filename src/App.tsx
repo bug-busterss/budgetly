@@ -20,11 +20,20 @@ function App() {
             element={
               <>
                 <HeaderTabsColored
-                  user={{
-                    name: '',
-                    image: '',
-                  }}
-                  tabs={['Dashboard', 'Insights', 'About']}
+                  links={[
+                    {
+                      label: 'Home',
+                      link: '/',
+                    },
+                    {
+                      label: 'Contact Us',
+                      link: '/contactus',
+                    },
+                    {
+                      label: 'About',
+                      link: '/aboutus',
+                    },
+                  ]}
                 />
                 <Container>
                   <ExpenseCard />
