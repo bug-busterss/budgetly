@@ -1,16 +1,25 @@
-import Demo from "./Components/Modal"
-import { useState } from 'react'
-import './App.css'
+import Demo from "./Components/Modal";
+import { AppShell } from "@mantine/core";
+import { useState } from "react";
+import HeaderTabsColored from "./Components/DS_Header";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
-    
-    <Demo/>
-    </div>  
-  )
+      <AppShell>
+        <Demo />
+        <HeaderTabsColored
+          user={{
+            name: "",
+            image: "",
+          }}
+          tabs={["Dashboard", "Insights", "About"]}
+        />
+      </AppShell>
+    </div>
+  );
 }
 
-export default App
+export default App;
