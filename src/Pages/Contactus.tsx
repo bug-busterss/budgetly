@@ -7,6 +7,7 @@ import {
   Group,
   SimpleGrid,
   createStyles,
+  Container,
 } from '@mantine/core';
 import { ContactIconsList } from '../Components/ContactIcons';
 // import bg from './bg.svg';
@@ -108,21 +109,8 @@ export function Contactus() {
   const { classes } = useStyles();
 
   return (
-    <Paper shadow='md' radius='lg'>
-      <div className={classes.wrapper}>
-        <div className={classes.contacts}>
-          <Text
-            size='lg'
-            weight={700}
-            className={classes.title}
-            sx={{ color: '#fff' }}
-          >
-            Contact information
-          </Text>
-
-          <ContactIconsList variant='white' />
-        </div>
-
+    <Container>
+      <Paper shadow='md' radius='lg'>
         <form
           className={classes.form}
           onSubmit={event => event.preventDefault()}
@@ -136,7 +124,7 @@ export function Contactus() {
               <TextInput label='Your name' placeholder='Your name' />
               <TextInput
                 label='Your email'
-                placeholder='hello@mantine.dev'
+                placeholder='user@gmail.com'
                 required
               />
             </SimpleGrid>
@@ -151,13 +139,18 @@ export function Contactus() {
             />
 
             <Group position='right' mt='md'>
-              <Button type='submit' className={classes.control}>
+              <Button
+                type='submit'
+                variant='gradient'
+                gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
+                className={classes.control}
+              >
                 Send message
               </Button>
             </Group>
           </div>
         </form>
-      </div>
-    </Paper>
+      </Paper>
+    </Container>
   );
 }
