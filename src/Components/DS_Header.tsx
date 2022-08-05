@@ -97,10 +97,11 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
           <Title style={{ fontFamily: 'Poppins' }}>Budgetly</Title>
           <Group spacing={5} className={classes.links}>
             {links.map(item => (
-              // <a key={item.label} href={item.link} className={classes.link}>
-              //   {item.label}
-              // </a>
-              <Link to={`${item.link}`} className={classes.link}>
+              <Link
+                key={item.label}
+                to={`${item.link}`}
+                className={classes.link}
+              >
                 {`${item.label}`}
               </Link>
             ))}

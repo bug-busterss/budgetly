@@ -62,7 +62,7 @@ export function RegisterForm(props: PaperProps) {
               console.log('USER SIGNED UP', data.user);
             })}
           >
-            <Stack>
+            <Stack mt='xl'>
               <FloatingLabelInput
                 label='Name'
                 formData={{
