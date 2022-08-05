@@ -120,7 +120,91 @@ export function UserInfoIcons({
                       </Text>
                     </Group>
                   </div>
-                  <div></div>
+                  <Card></Card>
+                </Group>
+              </Card.Section>
+            </Card>
+          </Grid.Col>
+
+          <Grid.Col span={6}>
+            <Card shadow='sm' p='lg' radius='md' withBorder>
+              <Card.Section>
+                <Group noWrap>
+                  <Avatar src='B_ava' size={94} radius='md' />
+                  <div>
+                    <Text
+                      size='xs'
+                      sx={{ textTransform: 'uppercase' }}
+                      weight={700}
+                      color='dimmed'
+                    >
+                      FULLSTRACK DEV
+                    </Text>
+
+                    <Text size='lg' weight={500} className={classes.name}>
+                      Usman Sabuwala
+                    </Text>
+
+                    <Group noWrap spacing={10} mt={3}>
+                      <IconAt stroke={1.5} size={16} className={classes.icon} />
+                      <Text size='xs' color='dimmed'>
+                        ui.sabuwala@gmail.com
+                      </Text>
+                    </Group>
+
+                    <Group noWrap spacing={10} mt={5}>
+                      <IconPhoneCall
+                        stroke={1.5}
+                        size={16}
+                        className={classes.icon}
+                      />
+                      <Text size='xs' color='dimmed'>
+                        8238892763
+                      </Text>
+                    </Group>
+                  </div>
+                </Group>
+              </Card.Section>
+            </Card>
+          </Grid.Col>
+
+          <Grid.Col span={6}>
+            <Card shadow='sm' p='lg' radius='md' withBorder>
+              <Card.Section>
+                <Group noWrap>
+                  <Avatar src='B_ava' size={94} radius='md' />
+                  <div>
+                    <Text
+                      size='xs'
+                      sx={{ textTransform: 'uppercase' }}
+                      weight={700}
+                      color='dimmed'
+                    >
+                      .Dev
+                    </Text>
+
+                    <Text size='lg' weight={500} className={classes.name}>
+                      Bhavesh Patil
+                    </Text>
+
+                    <Group noWrap spacing={10} mt={3}>
+                      <IconAt stroke={1.5} size={16} className={classes.icon} />
+                      <Text size='xs' color='dimmed'>
+                        BhaveshPatil8000@gmail.com
+                      </Text>
+                    </Group>
+
+                    <Group noWrap spacing={10} mt={5}>
+                      <IconPhoneCall
+                        stroke={1.5}
+                        size={16}
+                        className={classes.icon}
+                      />
+                      <Text size='xs' color='dimmed'>
+                        9427527473
+                      </Text>
+                    </Group>
+                  </div>
                 </Group>
               </Card.Section>
             </Card>
