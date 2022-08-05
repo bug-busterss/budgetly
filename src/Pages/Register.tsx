@@ -17,7 +17,6 @@ import { FloatingLabelInput } from '../Components/FloatingInput';
 import { useState } from 'react';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 import axios from 'axios';
-import DS_Header from '../Components/DS_Header';
 import { Link } from 'react-router-dom';
 
 export function RegisterForm(props: PaperProps) {

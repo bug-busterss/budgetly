@@ -11,6 +11,7 @@ import {
   SegmentedControl,
   Box,
   useMantineColorScheme,
+  Avatar,
 } from '@mantine/core';
 import { defaultFilter } from '@mantine/core/lib/TransferList/TransferList';
 import { useDisclosure } from '@mantine/hooks';
@@ -24,6 +25,7 @@ import {
   IconTrash,
 } from '@tabler/icons';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 // import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles(theme => ({
@@ -81,6 +83,7 @@ interface HeaderSearchProps {
 export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
+  const { auth, isLoading } = useAuth();
 
   return (
     <Header height={76} className={classes.header} mb={120} p='10px'>
@@ -99,6 +102,12 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
                 {`${item.label}`}
               </Link>
             ))}
+            {!isLoading && (
+              <Avatar
+                src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${auth?.user.user.name}`}
+                radius='xl'
+              />
+            )}
           </Group>
           <Burger
             opened={opened}

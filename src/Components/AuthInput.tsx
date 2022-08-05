@@ -5,13 +5,13 @@ import { useFloatingInput } from '../hooks/useFloatingInput';
 interface Props {
   input: FC<TextInputProps>;
   label: string;
-  form: {
-    value: string;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  };
 }
 
-export default function AuthInput({ input: Input, form, label }: Props) {
+export default function AuthInput({
+  input: Input,
+  label,
+  ...formProps
+}: Props & any) {
   const [focused, setFocused] = useState(false);
   const { classes } = useFloatingInput({ floating: focused });
   return (
@@ -19,11 +19,10 @@ export default function AuthInput({ input: Input, form, label }: Props) {
       label={label}
       required
       classNames={classes}
-      value={form.value}
-      onChange={form.onChange}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       mt='md'
+      {...formProps}
     />
   );
 }

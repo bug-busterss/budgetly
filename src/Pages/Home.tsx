@@ -12,7 +12,8 @@ export default function Home() {
           <h1>Loading...</h1>
         ) : (
           <>
-            <h2>{auth?.user?.id}</h2>
+            {/* https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=Usman */}
+            <h2>{auth?.user.user?.name}</h2>
             <ExpenseCard />
             <Title mt='lg'>History</Title>
             <HistoryCard />
