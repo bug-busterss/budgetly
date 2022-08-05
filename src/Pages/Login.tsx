@@ -1,22 +1,20 @@
-import { useToggle, upperFirst } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 import {
   TextInput,
   PasswordInput,
   Text,
   Paper,
-  Group,
   PaperProps,
-  Button,
-  Divider,
-  Checkbox,
-  Anchor,
   Stack,
   createStyles,
   Container,
   Center,
+  Anchor,
+  Group,
+  Button,
 } from '@mantine/core';
 import { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const useStyles = createStyles(
@@ -75,9 +73,7 @@ export default function Login(props: PaperProps) {
   const form = useForm({
     initialValues: {
       username: '',
-      name: '',
       password: '',
-      terms: true,
     },
 
     validate: {
@@ -97,42 +93,43 @@ export default function Login(props: PaperProps) {
             Welcome back to Budgetly
           </Text>
 
-          <form onSubmit={form.onSubmit(() => {})}>
-            <Stack mt={40}>
-              <TextInput
-                label='Username'
-                required
-                classNames={classes}
-                value={value}
-                onChange={() => setValue(form.values.username)}
-                onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
-              />
+          {/* <form onSubmit={form.onSubmit(() => {})}> */}
+          <Stack>
+            <TextInput
+              label='Username'
+              required
+              classNames={classes}
+              value={value}
+              onChange={() => setValue(form.values.username)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              mt='md'
+            />
 
-              <PasswordInput
-                required
-                label='Password'
-                classNames={classes}
-                value={value}
-                onChange={() => setValue(form.values.password)}
-                onFocus={() => setFocused1(true)}
-                onBlur={() => setFocused1(false)}
-                mt='md'
-              />
-            </Stack>
-            <Group position='apart' mt='xl'>
-              <Anchor
-                component={Link}
-                type='button'
-                color='dimmed'
-                size='xs'
-                to='/register'
-              >
-                Don't have an account? Register
-              </Anchor>
-              <Button type='submit'>Login</Button>
-            </Group>
-          </form>
+            <PasswordInput
+              required
+              label='Password'
+              classNames={classes}
+              value={value}
+              onChange={() => setValue(form.values.password)}
+              onFocus={() => setFocused1(true)}
+              onBlur={() => setFocused1(false)}
+              mt='md'
+            />
+          </Stack>
+          <Group position='apart' mt='xl'>
+            <Anchor
+              component={Link}
+              type='button'
+              color='dimmed'
+              size='xs'
+              to='/register'
+            >
+              Don't have an account? Register
+            </Anchor>
+            <Button type='submit'>Login</Button>
+          </Group>
+          {/* </form> */}
         </Paper>
       </Center>
     </Container>
