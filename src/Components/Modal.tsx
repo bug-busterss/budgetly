@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import * as React from 'react';
+import { IconPicker } from 'react-fa-icon-picker';
+
 import {
   Modal,
   Button,
