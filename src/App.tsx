@@ -42,6 +42,7 @@ function App() {
                   <HistoryCard />
                   <HistoryCard />
                   <HistoryCard />
+                  <HistoryCard />
                 </Container>
               </>
             }
