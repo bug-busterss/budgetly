@@ -23,6 +23,7 @@ import {
   IconSwitchHorizontal,
   IconTrash,
 } from '@tabler/icons';
+import { Link } from 'react-router-dom';
 // import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles(theme => ({
@@ -93,15 +94,15 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
     <Header height={56} className={classes.header} mb={120}>
       <Container>
         <div className={classes.inner}>
-          {/* <MantineProvider theme={{ fontFamily: 'Poppins' }}> */}
           <Title style={{ fontFamily: 'Poppins' }}>Budgetly</Title>
-          {/* </MantineProvider> */}
-          {/* <MantineLogo size={28} inverted /> */}
           <Group spacing={5} className={classes.links}>
             {links.map(item => (
-              <a key={item.label} href={item.link} className={classes.link}>
-                {item.label}
-              </a>
+              // <a key={item.label} href={item.link} className={classes.link}>
+              //   {item.label}
+              // </a>
+              <Link to={`${item.link}`} className={classes.link}>
+                {`${item.label}`}
+              </Link>
             ))}
           </Group>
           <Burger
@@ -112,87 +113,6 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
             color='#fff'
           />
         </div>
-
-        <Menu
-          width={260}
-          position='bottom-end'
-          transition='pop-top-right'
-          onClose={() => setUserMenuOpened(false)}
-          onOpen={() => setUserMenuOpened(true)}
-        >
-          {/* <Menu.Target>
-              <UnstyledButton
-                className={cx(classes.user, {
-                  [classes.userActive]: userMenuOpened,
-                })}
-              >
-                <Group spacing={7}>
-                  <Avatar
-                    src={user.image}
-                    alt={user.name}
-                    radius='xl'
-                    size={20}
-                  />
-                  <Text
-                    weight={500}
-                    size='sm'
-                    sx={{ lineHeight: 1, color: theme.white }}
-                    mr={3}
-                  >
-                    {user.name}
-                  </Text>
-                  <IconChevronDown size={12} stroke={1.5} />
-                </Group>
-              </UnstyledButton> 
-            </Menu.Target> */}
-          <Menu.Dropdown>
-            <Menu.Label>Settings</Menu.Label>
-            <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
-              Account settings
-            </Menu.Item>
-            <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
-              Change account
-            </Menu.Item>
-            <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
-              Logout
-            </Menu.Item>
-
-            <Menu.Divider />
-
-            <Menu.Label>Danger zone</Menu.Label>
-            <Menu.Item color='red' icon={<IconTrash size={14} stroke={1.5} />}>
-              Delete account
-            </Menu.Item>
-            <Menu.Divider />
-            <Menu.Divider>Theme</Menu.Divider>
-            <Menu.Item>
-              <SegmentedControl
-                value={colorScheme}
-                onChange={(value: 'light' | 'dark') => toggleColorScheme(value)}
-                data={[
-                  {
-                    value: 'light',
-                    label: (
-                      <Center>
-                        <IconSun size={16} stroke={1.5} />
-                        <Box ml={10}>Light</Box>
-                      </Center>
-                    ),
-                  },
-                  {
-                    value: 'dark',
-                    label: (
-                      <Center>
-                        <IconMoon size={16} stroke={1.5} />
-                        <Box ml={10}>Dark</Box>
-                      </Center>
-                    ),
-                  },
-                ]}
-              />
-            </Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
       </Container>
     </Header>
   );
