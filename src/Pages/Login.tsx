@@ -13,8 +13,11 @@ import {
   Anchor,
   Stack,
   createStyles,
+  Container,
+  Center,
 } from '@mantine/core';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const useStyles = createStyles(
   (
@@ -87,38 +90,52 @@ export default function Login(props: PaperProps) {
   });
 
   return (
-    <>
-      <Paper radius='md' p='xl' withBorder {...props}>
-        <Text size='lg' weight={500}>
-          Welcome to Budgetly
-        </Text>
+    <Container>
+      <Center>
+        <Paper radius='md' p='xl' withBorder {...props}>
+          <Text size='lg' weight={500}>
+            Welcome back to Budgetly
+          </Text>
 
-        {/* <form onSubmit={form.onSubmit(() => {})}> */}
-        <Stack>
-          <TextInput
-            label='Username'
-            required
-            classNames={classes}
-            value={value}
-            onChange={() => setValue(form.values.username)}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            mt='md'
-          />
+          {/* <form onSubmit={form.onSubmit(() => {})}> */}
+          <Stack>
+            <TextInput
+              label='Username'
+              required
+              classNames={classes}
+              value={value}
+              onChange={() => setValue(form.values.username)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              mt='md'
+            />
 
-          <PasswordInput
-            required
-            label='Password'
-            classNames={classes}
-            value={value}
-            onChange={() => setValue(form.values.password)}
-            onFocus={() => setFocused1(true)}
-            onBlur={() => setFocused1(false)}
-            mt='md'
-          />
-        </Stack>
-        {/* </form> */}
-      </Paper>
-    </>
+            <PasswordInput
+              required
+              label='Password'
+              classNames={classes}
+              value={value}
+              onChange={() => setValue(form.values.password)}
+              onFocus={() => setFocused1(true)}
+              onBlur={() => setFocused1(false)}
+              mt='md'
+            />
+          </Stack>
+          <Group position='apart' mt='xl'>
+            <Anchor
+              component={Link}
+              type='button'
+              color='dimmed'
+              size='xs'
+              to='/register'
+            >
+              Don't have an account? Register
+            </Anchor>
+            <Button type='submit'>Login</Button>
+          </Group>
+          {/* </form> */}
+        </Paper>
+      </Center>
+    </Container>
   );
 }
