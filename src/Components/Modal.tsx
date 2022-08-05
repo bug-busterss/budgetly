@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Modal,
   Button,
@@ -6,8 +6,8 @@ import {
   Grid,
   useMantineTheme,
   Title,
-} from "@mantine/core";
-import { FloatingLabelInput } from "./FloatingInput";
+} from '@mantine/core';
+import { FloatingLabelInput } from './FloatingInput';
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -16,30 +16,30 @@ function Demo() {
   return (
     <>
       <Modal
-        size="55%"
+        size='55%'
         opened={opened}
         onClose={() => setOpened(false)}
         overlayColor={
-          theme.colorScheme === "dark"
+          theme.colorScheme === 'dark'
             ? theme.colors.dark[9]
             : theme.colors.gray[2]
         }
         overlayOpacity={0.55}
         overlayBlur={3}
-        title="Add Expense"
+        title='Add Expense'
       >
-        <Grid p="lg">
+        <Grid p='lg'>
           {/* <Title>Add Expense</Title> */}
-          <FloatingLabelInput label="Name" placeholder="Enter Expense" />
-          <FloatingLabelInput
-            label="Amount"
-            placeholder="Enter Amount"
-            isNumber
-          />
+          <Grid.Col>
+            <FloatingLabelInput label='Name' />
+          </Grid.Col>
+          <Grid.Col>
+            <FloatingLabelInput label='Amount' isNumber />
+          </Grid.Col>
         </Grid>
       </Modal>
 
-      <Group position="center">
+      <Group position='center'>
         <Button onClick={() => setOpened(true)}>Open Modal</Button>
       </Group>
     </>

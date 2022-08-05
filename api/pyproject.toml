@@ -10,6 +10,7 @@ fastapi = "^0.79.0"
 uvicorn = "^0.18.2"
 fastapi-login = "^1.8.2"
 prisma = {git = "https://github.com/RobertCraigie/prisma-client-py", rev = "main"}
+python-multipart = "^0.0.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
