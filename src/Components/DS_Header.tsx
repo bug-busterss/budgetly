@@ -62,11 +62,7 @@ const useStyles = createStyles(theme => ({
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
-          .background,
-        0.1
-      ),
+      backgroundColor: '#AE3EC9',
     },
   },
 
@@ -90,7 +86,9 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
     <Header height={56} className={classes.header} mb={120}>
       <Container>
         <div className={classes.inner}>
-          <Title style={{ fontFamily: 'Poppins' }}>Budgetly</Title>
+          <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
+            Budgetly
+          </Title>
           <Group spacing={5} className={classes.links}>
             {links.map(item => (
               // <a key={item.label} href={item.link} className={classes.link}>
