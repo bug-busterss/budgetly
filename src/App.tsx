@@ -15,27 +15,27 @@ function App() {
   return (
     <div className='App'>
       <AppShell>
+        <HeaderTabsColored
+          links={[
+            {
+              label: 'Home',
+              link: '/',
+            },
+            {
+              label: 'Contact Us',
+              link: '/contactus',
+            },
+            {
+              label: 'About',
+              link: '/aboutus',
+            },
+          ]}
+        />
         <Routes>
           <Route
             path='/'
             element={
               <>
-                <HeaderTabsColored
-                  links={[
-                    {
-                      label: 'Home',
-                      link: '/',
-                    },
-                    {
-                      label: 'Contact Us',
-                      link: '/contactus',
-                    },
-                    {
-                      label: 'About',
-                      link: '/aboutus',
-                    },
-                  ]}
-                />
                 <Container>
                   <ExpenseCard />
                   <Title mt='lg'>History</Title>
@@ -51,7 +51,6 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/contactus' element={<Contactus />} />
         </Routes>
-        <Footer />
       </AppShell>
     </div>
   );
