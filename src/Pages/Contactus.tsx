@@ -9,7 +9,7 @@ import {
   createStyles,
 } from '@mantine/core';
 import { ContactIconsList } from '../Components/ContactIcons';
-import bg from './bg.svg';
+// import bg from './bg.svg';
 
 const useStyles = createStyles(theme => {
   const BREAKPOINT = theme.fn.smallerThan('sm');
@@ -74,7 +74,7 @@ const useStyles = createStyles(theme => {
       boxSizing: 'border-box',
       position: 'relative',
       borderRadius: theme.radius.lg - 2,
-      backgroundImage: `url(${bg})`,
+      //   backgroundImage: `url(${bg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       border: '1px solid transparent',
@@ -104,7 +104,7 @@ const useStyles = createStyles(theme => {
   };
 });
 
-export function GetInTouch() {
+export function Contactus() {
   const { classes } = useStyles();
 
   return (

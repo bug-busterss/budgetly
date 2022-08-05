@@ -8,6 +8,7 @@ import ExpenseCard from './Components/Card';
 import { Footer } from './Components/Footer';
 import About from './Pages/About';
 import Login from './Pages/Login';
+import { Contactus } from './Pages/Contactus';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path='/register' element={<RegisterForm />} />
           <Route path='/login' element={<Login />} />
           <Route path='/about' element={<About />} />
+          <Route path='/contactus' element={<Contactus />} />
         </Routes>
         <Footer />
       </AppShell>
