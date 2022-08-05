@@ -1,4 +1,5 @@
-import { Card, Title } from '@mantine/core';
+import { Card, Group, Title } from '@mantine/core';
+import { IconSwimming } from '@tabler/icons';
 
 interface HeaderTabsProps {
   user: { name: string; image: string };
@@ -7,13 +8,17 @@ interface HeaderTabsProps {
 
 export default function ExpenseCard({ user, tabs }: HeaderTabsProps) {
   return (
-    <Card>
-      <Card shadow='sm' p='lg' radius='md' withBorder>
-        <Title>Expense </Title>
-        <Title order={2}>$600</Title>
-      </Card>
+    <Card shadow='sm' p='lg' radius='md' withBorder>
+      <Card.Section>
+        <Group position='apart'>
+          <div>
+            <Title>Expense </Title>
+            <Title order={2}>$600</Title>
+          </div>
 
-      <Card.Section></Card.Section>
+          <IconSwimming />
+        </Group>
+      </Card.Section>
     </Card>
   );
 }
