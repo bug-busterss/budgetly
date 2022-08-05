@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import * as React from 'react';
-import { IconPicker } from 'react-fa-icon-picker';
-
 import {
   Modal,
   Button,
@@ -13,8 +10,12 @@ import {
 import { FloatingLabelInput } from './FloatingInput';
 import { Category } from './Select';
 
-function Demo() {
-  const [opened, setOpened] = useState(false);
+type ModalProps = {
+  opened: boolean;
+  setOpened: Dispatch<SetStateAction<boolean>>;
+};
+
+function Demo({ opened, setOpened }: ModalProps) {
   const theme = useMantineTheme();
 
   return (
@@ -45,10 +46,6 @@ function Demo() {
           </Grid.Col>
         </Grid>
       </Modal>
-
-      <Group position='center'>
-        <Button onClick={() => setOpened(true)}>Open Modal</Button>
-      </Group>
     </>
   );
 }
