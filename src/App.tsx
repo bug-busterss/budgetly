@@ -10,6 +10,7 @@ import About from './Pages/About';
 import Login from './Pages/Login';
 import { Contactus } from './Pages/Contactus';
 import HistoryCard from './Components/HistoryCard';
+import Home from './Pages/Home';
 
 function App() {
   return (
@@ -32,20 +33,7 @@ function App() {
           ]}
         />
         <Routes>
-          <Route
-            path='/'
-            element={
-              <>
-                <Container>
-                  <ExpenseCard />
-                  <Title mt='lg'>History</Title>
-                  <HistoryCard />
-                  <HistoryCard />
-                  <HistoryCard />
-                </Container>
-              </>
-            }
-          />
+          <Route path='/' element={<Home />} />
           <Route path='/register' element={<RegisterForm />} />
           <Route path='/login' element={<Login />} />
           <Route path='/about' element={<About />} />
