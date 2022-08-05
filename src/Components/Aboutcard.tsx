@@ -95,17 +95,17 @@ export function UserInfoIcons({
                       weight={700}
                       color='dimmed'
                     >
-                      Dev
+                      FRONTEND DEV
                     </Text>
 
                     <Text size='lg' weight={500} className={classes.name}>
-                      Tejash
+                      Faizan Lal
                     </Text>
 
                     <Group noWrap spacing={10} mt={3}>
                       <IconAt stroke={1.5} size={16} className={classes.icon} />
                       <Text size='xs' color='dimmed'>
-                        Tejash
+                        faizanlal563@gmail.com
                       </Text>
                     </Group>
 
@@ -116,10 +116,11 @@ export function UserInfoIcons({
                         className={classes.icon}
                       />
                       <Text size='xs' color='dimmed'>
-                        55
+                        9313157929
                       </Text>
                     </Group>
                   </div>
+                  <div></div>
                 </Group>
               </Card.Section>
             </Card>
