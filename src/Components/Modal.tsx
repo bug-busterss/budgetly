@@ -50,12 +50,12 @@ function ExpenseModal({ opened, isAdd, setOpened, token }: ModalProps) {
               { ...formData, isExpense: !isAdd },
               { headers: { Authorization: `Bearer ${token}` } }
             );
-            await mutate(['balance', token]);
-            await mutate(['activities', token]);
             form.reset();
             setIsLoading(false);
             setOpened(false);
             console.log(data);
+            await mutate(['balance', token]);
+            await mutate(['activities', token]);
           })}
         >
           <Grid p='lg'>
