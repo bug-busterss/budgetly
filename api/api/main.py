@@ -29,12 +29,23 @@ app.add_middleware(
 )
 
 
-@app.delete("/activity/{id}")
-async def delete_activity(id: str, user: User = Depends(manager)):
+@app.get("/reset")
+async def reset_activity(user: User = Depends(manager)):
     async with Prisma() as db:
-        deleted_acts = await db.activity.delete_many(
-            where={"id": id, "userId": user.id}
-        )
+        await db.user.update(where={"id": user.id}, data={"balance": 0})
+    return {"message": "Reset succesfully"}
+
+
+@app.delete("/activity/{id}")
+async def delete_activity(
+    id: str, amount: int, isExpense: bool, user: User = Depends(manager)
+):
+    updated_balance: AtomicBigIntInput = (
+        {"increment": amount} if isExpense else {"decrement": amount}
+    )
+    async with Prisma() as db:
+        await db.activity.delete_many(where={"id": id, "userId": user.id})
+        await db.user.update(where={"id": user.id}, data={"balance": updated_balance})
     return {"message": "Deleted succesfully"}
 
 

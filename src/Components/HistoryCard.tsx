@@ -10,9 +10,11 @@ import { mutate } from 'swr';
 export default function HistoryCard({
   activity,
   token,
+  canDelete,
 }: {
   activity: Activity;
   token: string;
+  canDelete: boolean;
 }) {
   const [loading, setLoading] = useState(true);
   const openDeleteModal = () =>
@@ -28,7 +30,7 @@ export default function HistoryCard({
       onConfirm: async () => {
         const actId = activity.id;
         const { data } = await axios.delete(
-          `http://localhost:8000/activity/${actId}`,
+          `http://localhost:8000/activity/${actId}?amount=${activity.amount}&isExpense=${activity.isExpense}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         await mutate(['activities', token]);
@@ -64,21 +66,22 @@ export default function HistoryCard({
             </Group>
             <Group>
               <Text size='xl'>{format(activity.createdAt)}</Text>
-
-              <ActionIcon
-                variant='transparent'
-                size='xl'
-                radius='xl'
-                onClick={openDeleteModal}
-                sx={{
-                  ':hover': {
-                    background: 'rgba(255, 0, 0, 0.7)',
-                    color: 'azure',
-                  },
-                }}
-              >
-                <IconTrash />
-              </ActionIcon>
+              {canDelete && (
+                <ActionIcon
+                  variant='transparent'
+                  size='xl'
+                  radius='xl'
+                  onClick={openDeleteModal}
+                  sx={{
+                    ':hover': {
+                      background: 'rgba(255, 0, 0, 0.7)',
+                      color: 'azure',
+                    },
+                  }}
+                >
+                  <IconTrash />
+                </ActionIcon>
+              )}
             </Group>
           </Group>
         </Card.Section>
