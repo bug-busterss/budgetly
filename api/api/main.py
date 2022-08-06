@@ -31,7 +31,9 @@ app.add_middleware(
 @app.get("/activities")
 async def get_activities(user: User = Depends(manager)):
     async with Prisma() as db:
-        activities = await db.activity.find_many(where={"userId": user.id})
+        activities = await db.activity.find_many(
+            where={"userId": user.id}, order={"createdAt": "desc"}
+        )
     return {"activities": activities}
 
 

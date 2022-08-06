@@ -1,7 +1,8 @@
-import { Card, Container, Group, Text, Title } from '@mantine/core';
-import React from 'react';
+import { Card, Group, Text } from '@mantine/core';
+import { Activity } from '../types';
+import { format } from 'timeago.js';
 
-export default function HistoryCard() {
+export default function HistoryCard({ activity }: { activity: Activity }) {
   return (
     <div>
       <Card shadow='md' p='lg' radius='lg' withBorder mt='sm'>
@@ -9,13 +10,13 @@ export default function HistoryCard() {
           <Group position='apart'>
             <Group position='center' spacing={8}>
               <Text transform='capitalize' size='xl'>
-                ICON
+                {activity.name}
               </Text>
               <Text size='xl' weight={700}>
-                ₹45
+                ₹{activity.amount}
               </Text>
             </Group>
-            <Text size='xl'>9min ago</Text>
+            <Text size='xl'>{format(activity.createdAt)}</Text>
           </Group>
         </Card.Section>
       </Card>
