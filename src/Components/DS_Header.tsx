@@ -104,17 +104,13 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
       <Container fluid>
         <div className={classes.inner}>
           <Group>
-            <UnstyledButton component={Link} to='/'>
-              <Group>
-                <Image
-                  src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
-                  width={40}
-                />
-                <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
-                  Budgetly
-                </Title>
-              </Group>
-            </UnstyledButton>
+            <Image
+              src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
+              width={40}
+            />
+            <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
+              Budgetly
+            </Title>
           </Group>
           <Group spacing={5} className={classes.links}>
             {authLinks.map(item => (
@@ -140,20 +136,14 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
 
                   <Menu.Dropdown>
                     <Menu.Label>Application</Menu.Label>
-                    <Menu.Item icon={<IconEdit size={30} />}>
+                    <Menu.Item icon={<IconEdit size={25} />}>
                       Update Profile
                     </Menu.Item>
-                    <Menu.Item icon={<IconSettings size={30} />}>
+                    <Menu.Item icon={<IconSettings size={25} />}>
                       Settings
                     </Menu.Item>
                     <Menu.Divider />
-                    <Menu.Item
-                      onClick={logoutUser}
-                      icon={<IconLogout size={35} />}
-                    >
-                      <UnstyledButton>Logout</UnstyledButton>
-                    </Menu.Item>
-                    <Menu.Item icon={<IconLogout size={25} />}>
+                    <Menu.Item icon={<IconLogout size={30} />}>
                       <UnstyledButton onClick={logoutUser}>
                         Logout
                       </UnstyledButton>
