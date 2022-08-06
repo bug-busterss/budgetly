@@ -9,7 +9,7 @@ import {
 } from '@mantine/core';
 import { IconMinus, IconPlus, IconSwimming } from '@tabler/icons';
 import { useState } from 'react';
-import Demo from './Modal';
+import ExpenseModal from './Modal';
 
 export default function ExpenseCard({ balance }: { balance: number }) {
   const [opened, setOpened] = useState(false);
@@ -68,7 +68,7 @@ export default function ExpenseCard({ balance }: { balance: number }) {
           </Group>
         </Card.Section>
       </Card>
-      <Demo opened={opened} setOpened={setOpened} isAdd={isAdd} />
+      <ExpenseModal opened={opened} setOpened={setOpened} isAdd={isAdd} />
     </>
   );
 }
