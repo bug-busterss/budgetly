@@ -7,7 +7,7 @@ from prisma import Prisma
 from prisma.models import User
 
 from .loginManager import manager, query_user
-from .models import SignupUser
+from .models import AddActivity, SignupUser
 
 app = FastAPI()
 manager.useRequest(app)
@@ -26,6 +26,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.post("/activities")
+async def add_activity(activity: AddActivity, user: User = Depends(manager)):
+    async with Prisma() as db:
+        new_activity = await db.activity.create(
+            data={
+                **activity,
+                "userId": user.id,
+            }
+        )
+    return {"activity": new_activity}
 
 
 @app.get("/users/me")

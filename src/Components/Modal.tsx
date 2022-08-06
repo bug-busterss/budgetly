@@ -16,7 +16,7 @@ type ModalProps = {
   setOpened: Dispatch<SetStateAction<boolean>>;
 };
 
-function Demo({ opened, isAdd, setOpened }: ModalProps) {
+function ExpenseModal({ opened, isAdd, setOpened }: ModalProps) {
   const theme = useMantineTheme();
   const [expense, setexpense] = useState(false);
   return (
@@ -60,4 +60,4 @@ function Demo({ opened, isAdd, setOpened }: ModalProps) {
   );
 }
 
-export default Demo;
+export default ExpenseModal;
