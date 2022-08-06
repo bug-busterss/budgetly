@@ -30,7 +30,6 @@ export default function Login(props: PaperProps) {
     },
 
     validate: {
-      //   email: val => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
       password: val =>
         val.length <= 4
           ? 'Password should include at least 6 characters'
@@ -56,7 +55,6 @@ export default function Login(props: PaperProps) {
                 }
               );
               const user = await getCurentUser(data['access_token']);
-              // localStorage.setItem('user', JSON.stringify(user));
               setAuth(user);
               navigate('/');
             })}

@@ -9,8 +9,6 @@ import {
   createStyles,
   Container,
 } from '@mantine/core';
-import { ContactIconsList } from '../Components/ContactIcons';
-// import bg from './bg.svg';
 
 const useStyles = createStyles(theme => {
   const BREAKPOINT = theme.fn.smallerThan('sm');
