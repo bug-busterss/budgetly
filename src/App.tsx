@@ -8,12 +8,15 @@ import { Contactus } from './Pages/Contactus';
 import Home from './Pages/Home';
 import DeleteConfirmation from './Components/DeleteConfirmation';
 import HistoryCardContainer from './Components/HistoryCardContainer';
+import { useAuth } from './hooks/useAuth';
 
 function App() {
+  const authData = useAuth();
   return (
     <div className='App'>
       <AppShell>
         <HeaderTabsColored
+          authData={authData}
           links={[
             {
               label: 'Home',
@@ -35,9 +38,9 @@ function App() {
         />
 
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home authData={authData} />} />
           <Route path='/register' element={<RegisterForm />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login authData={authData} />} />
           <Route path='/aboutus' element={<About />} />
           <Route path='/contactus' element={<Contactus />} />
         </Routes>
