@@ -16,6 +16,7 @@ import HistoryCardContainer from '../Components/HistoryCardContainer';
 import { UseAuthReturn } from '../hooks/useAuth';
 import Undraw from 'react-undraw';
 import { IconFilter } from '@tabler/icons';
+import Filtermain from '../Components/Filter';
 
 Undraw.defaultProps.primaryColor = '#862E9C';
 
@@ -34,9 +35,7 @@ export default function Home({ authData }: { authData: UseAuthReturn }) {
             <ExpenseCard token={authData.auth.token} />
             <Group position='apart'>
               <Title mt='xl'>History</Title>
-              <ActionIcon>
-                <IconFilter size={40} />
-              </ActionIcon>
+              <Filtermain />
             </Group>
 
             <HistoryCardContainer token={authData.auth.token} />
