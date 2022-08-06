@@ -29,7 +29,7 @@ export default function Home({ authData }: { authData: UseAuthReturn }) {
             {/* https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=Usman */}
             <h2>{authData.auth?.user.user?.name}</h2>
             <ExpenseCard token={authData.auth.token} />
-            <Title mt='lg'>History</Title>
+            <Title mt='xl'>History</Title>
             <HistoryCardContainer token={authData.auth.token} />
           </>
         ) : (

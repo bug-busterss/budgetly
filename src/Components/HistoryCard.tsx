@@ -1,11 +1,19 @@
-import { ActionIcon, Card, Group, Skeleton, Text } from '@mantine/core';
+import { ActionIcon, Card, Group, Text } from '@mantine/core';
 import { Activity } from '../types';
 import { format } from 'timeago.js';
 import { IconTrash } from '@tabler/icons';
 import { useState } from 'react';
 import { openConfirmModal } from '@mantine/modals';
+import axios from 'axios';
+import { mutate } from 'swr';
 
-export default function HistoryCard({ activity }: { activity: Activity }) {
+export default function HistoryCard({
+  activity,
+  token,
+}: {
+  activity: Activity;
+  token: string;
+}) {
   const [loading, setLoading] = useState(true);
   const openDeleteModal = () =>
     openConfirmModal({
@@ -17,7 +25,14 @@ export default function HistoryCard({ activity }: { activity: Activity }) {
       labels: { confirm: 'Delete', cancel: 'Cancel' },
       confirmProps: { color: 'red' },
       onCancel: () => console.log('Cancel'),
-      onConfirm: () => console.log('Confirmed'),
+      onConfirm: async () => {
+        const actId = activity.id;
+        const { data } = await axios.delete(
+          `http://localhost:8000/activity/${actId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        await mutate(['activities', token]);
+      },
     });
   return (
     <div>

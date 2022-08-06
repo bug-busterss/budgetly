@@ -14,7 +14,7 @@ type ModalProps = {
 
 interface ActivityForm {
   name?: string;
-  amount: number;
+  amount: number | null;
 }
 
 function ExpenseModal({ opened, isAdd, setOpened, token }: ModalProps) {
@@ -23,7 +23,7 @@ function ExpenseModal({ opened, isAdd, setOpened, token }: ModalProps) {
   const form = useForm<ActivityForm>({
     initialValues: {
       name: '',
-      amount: 0,
+      amount: null,
     },
   });
 

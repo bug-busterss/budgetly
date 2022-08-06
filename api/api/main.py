@@ -29,6 +29,15 @@ app.add_middleware(
 )
 
 
+@app.delete("/activity/{id}")
+async def delete_activity(id: str, user: User = Depends(manager)):
+    async with Prisma() as db:
+        deleted_acts = await db.activity.delete_many(
+            where={"id": id, "userId": user.id}
+        )
+    return {"message": "Deleted succesfully"}
+
+
 @app.get("/activities")
 async def get_activities(user: User = Depends(manager)):
     async with Prisma() as db:
