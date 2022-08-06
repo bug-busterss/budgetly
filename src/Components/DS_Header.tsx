@@ -15,7 +15,6 @@ import { IconEdit, IconLogout, IconSettings } from '@tabler/icons';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-// import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles(theme => ({
   header: {

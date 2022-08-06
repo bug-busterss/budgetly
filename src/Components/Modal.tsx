@@ -73,9 +73,7 @@ function ExpenseModal({ opened, isAdd, setOpened, token }: ModalProps) {
                 {...form.getInputProps('amount')}
               />
             </Grid.Col>
-            {/* <Grid.Col>
-            <Category />
-          </Grid.Col> */}
+
             <Grid.Col>
               <Button
                 variant='gradient'

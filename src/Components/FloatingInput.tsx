@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from 'react';
+import { useState } from 'react';
 import { TextInput, NumberInput } from '@mantine/core';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 
