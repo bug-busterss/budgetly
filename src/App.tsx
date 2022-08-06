@@ -7,6 +7,7 @@ import Login from './Pages/Login';
 import { Contactus } from './Pages/Contactus';
 import Home from './Pages/Home';
 import DeleteConfirmation from './Components/DeleteConfirmation';
+import HistoryCardContainer from './Components/HistoryCardContainer';
 
 function App() {
   return (
