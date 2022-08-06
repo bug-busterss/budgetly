@@ -11,7 +11,7 @@ import { IconMinus, IconPlus, IconSwimming } from '@tabler/icons';
 import { useState } from 'react';
 import Demo from './Modal';
 
-export default function ExpenseCard() {
+export default function ExpenseCard({ balance }: { balance: number }) {
   const [opened, setOpened] = useState(false);
   const [isAdd, setIsAdd] = useState(false);
 
@@ -42,7 +42,7 @@ export default function ExpenseCard() {
               </Button>
             </Tooltip>
             <div>
-              <Title> ₹600</Title>
+              <Title>₹{balance}</Title>
             </div>
             {/* DEDUCT BUTTON */}
             <Tooltip

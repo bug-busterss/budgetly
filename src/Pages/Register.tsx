@@ -8,8 +8,6 @@ import {
   Button,
   Anchor,
   Stack,
-  Select,
-  Header,
   Container,
   Center,
 } from '@mantine/core';
@@ -17,9 +15,10 @@ import { FloatingLabelInput } from '../Components/FloatingInput';
 import { useState } from 'react';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function RegisterForm(props: PaperProps) {
+  const navigate = useNavigate();
   const form = useForm({
     initialValues: {
       password: '',
@@ -59,6 +58,7 @@ export function RegisterForm(props: PaperProps) {
               );
               if (!data.user) return;
               console.log('USER SIGNED UP', data.user);
+              navigate('/login');
             })}
           >
             <Stack mt='xl'>

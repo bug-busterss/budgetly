@@ -1,23 +1,29 @@
+import { useLocalStorage } from '@mantine/hooks';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import superjson from 'superjson';
 
 export const useAuth = () => {
-  const [auth, setAuth] = useState<any>(null);
+  // const [auth, setAuth] = useState<any>(null);
+  const [auth, setAuth] = useLocalStorage<any>({
+    key: 'user',
+    defaultValue: null,
+    serialize: superjson.stringify,
+    deserialize: str => (str === undefined ? null : superjson.parse(str)),
+  });
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     (async () => {
-      const user = localStorage.getItem('user');
-      if (!user) return null;
+      if (!auth) return null;
       setIsLoading(true);
       const res = await axios.get('http://localhost:8000/users/me', {
-        headers: { Authorization: `Bearer ${JSON.parse(user).token}` },
+        headers: { Authorization: `Bearer ${auth.token}` },
       });
       setIsLoading(false);
       if (res.status !== 200) return null;
-      localStorage.setItem('user', JSON.stringify(res.data));
-      setAuth({ isLoading, user: res.data });
+      setAuth(res.data);
     })();
   }, []);
-  console.log(auth);
-  return { auth, isLoading };
+  console.log({ auth });
+  return { auth, setAuth, isLoading };
 };

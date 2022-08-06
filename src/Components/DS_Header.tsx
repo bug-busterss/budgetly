@@ -15,6 +15,7 @@ import {
   Button,
   Text,
   Anchor,
+  UnstyledButton,
 } from '@mantine/core';
 import { defaultFilter } from '@mantine/core/lib/TransferList/TransferList';
 import { useDisclosure } from '@mantine/hooks';
@@ -87,17 +88,27 @@ interface HeaderSearchProps {
 export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
-  const { auth, isLoading } = useAuth();
+  const { auth, setAuth, isLoading } = useAuth();
   const [authLinks, setAuthLinks] = useState(links);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!auth) return;
+    if (!auth) {
+      if (authLinks.at(-1)?.link === '/login') return;
+      setAuthLinks(prevAuthLinks => [
+        ...prevAuthLinks,
+        {
+          label: 'Signin/Signup',
+          link: '/login',
+        },
+      ]);
+      return;
+    }
     setAuthLinks(authLinks.filter(item => item.link !== '/login'));
-  }, [auth]);
+  }, []);
 
   function logoutUser() {
-    localStorage.removeItem('user');
+    setAuth(null);
     navigate('/login');
   }
 
@@ -118,16 +129,16 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
                 {`${item.label}`}
               </Link>
             ))}
-            {auth && (
-              <Anchor className={classes.link} onClick={logoutUser}>
-                Logout
-              </Anchor>
-            )}
-            {!isLoading && (
-              <Avatar
-                src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${auth?.user.user.name}`}
-                radius='xl'
-              />
+            {auth !== null && (
+              <>
+                <UnstyledButton className={classes.link} onClick={logoutUser}>
+                  Logout
+                </UnstyledButton>
+                <Avatar
+                  src={`https://avatars.dicebear.com/api/initials/${auth?.user?.user?.name}.svg`}
+                  radius='xl'
+                />
+              </>
             )}
           </Group>
           <Burger

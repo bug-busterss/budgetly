@@ -13,11 +13,15 @@ import {
   Button,
 } from '@mantine/core';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthInput from '../Components/AuthInput';
 import { getCurentUser } from '../utils/getCurrentUser';
+import { useAuth } from '../hooks/useAuth';
 
 export default function Login(props: PaperProps) {
+  const { auth, setAuth, isLoading } = useAuth();
+  const navigate = useNavigate();
+
   const form = useForm({
     initialValues: {
       username: '',
@@ -51,7 +55,9 @@ export default function Login(props: PaperProps) {
                 }
               );
               const user = await getCurentUser(data['access_token']);
-              localStorage.setItem('user', JSON.stringify(user));
+              // localStorage.setItem('user', JSON.stringify(user));
+              setAuth(user);
+              navigate('/');
             })}
           >
             <Stack mt='xl'>
