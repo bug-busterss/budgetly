@@ -1,10 +1,10 @@
 import { ActionIcon, CopyButton, Tooltip } from '@mantine/core';
 import { IconCheck, IconCopy } from '@tabler/icons';
 
-const Copybtn = () => {
+const Copybtn = ({ devemail }: { devemail: string }) => {
   return (
     <div>
-      <CopyButton value='https://mantine.dev' timeout={2000}>
+      <CopyButton value={devemail} timeout={2000}>
         {({ copied, copy }) => (
           <Tooltip
             label={copied ? 'Copied' : 'Copy'}

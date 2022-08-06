@@ -71,7 +71,7 @@ export function UserInfoIcons({
                       <Text size='xs' color='dimmed'>
                         pateltejash49@gmail.com
                       </Text>
-                      <Copybtn />
+                      <Copybtn devemail={'pateltejash49@gmail.com'} />
                     </Group>
 
                     <Group noWrap spacing={10} mt={5}>
@@ -113,7 +113,7 @@ export function UserInfoIcons({
                       <Text size='xs' color='dimmed'>
                         faizanlal563@gmail.com
                       </Text>
-                      <Copybtn />
+                      <Copybtn devemail={'faizanlal563@gmail.com'} />
                     </Group>
 
                     <Group noWrap spacing={10} mt={5}>
@@ -156,7 +156,7 @@ export function UserInfoIcons({
                       <Text size='xs' color='dimmed'>
                         ui.sabuwala@gmail.com
                       </Text>
-                      <Copybtn />
+                      <Copybtn devemail={'ui.sabuwala@gmail.com'} />
                     </Group>
 
                     <Group noWrap spacing={10} mt={5}>
@@ -199,7 +199,7 @@ export function UserInfoIcons({
                       <Text size='xs' color='dimmed'>
                         BhaveshPatil8000@gmail.com
                       </Text>
-                      <Copybtn />
+                      <Copybtn devemail={'BhaveshPatil8000@gmail.com'} />
                     </Group>
 
                     <Group noWrap spacing={10} mt={5}>
