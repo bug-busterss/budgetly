@@ -1,12 +1,10 @@
 import {
-  ActionIcon,
   Anchor,
   Center,
   Container,
   Group,
   Image,
   Loader,
-  Paper,
   Stack,
   Title,
 } from '@mantine/core';
@@ -15,12 +13,13 @@ import ExpenseCard from '../Components/Card';
 import HistoryCardContainer from '../Components/HistoryCardContainer';
 import { UseAuthReturn } from '../hooks/useAuth';
 import Undraw from 'react-undraw';
-import { IconFilter } from '@tabler/icons';
 import Filtermain from '../Components/Filter';
+import { useState } from 'react';
 
 Undraw.defaultProps.primaryColor = '#862E9C';
 
 export default function Home({ authData }: { authData: UseAuthReturn }) {
+  const [selectdFilter, setSelectedFilter] = useState<string | null>(null);
   return (
     <>
       <Container>
@@ -35,10 +34,13 @@ export default function Home({ authData }: { authData: UseAuthReturn }) {
             <ExpenseCard token={authData.auth.token} />
             <Group position='apart'>
               <Title mt='xl'>History</Title>
-              <Filtermain />
+              <Filtermain setSelectedFilter={setSelectedFilter} />
             </Group>
 
-            <HistoryCardContainer token={authData.auth.token} />
+            <HistoryCardContainer
+              token={authData.auth.token}
+              selectedFilter={selectdFilter}
+            />
           </>
         ) : (
           <Stack mt='xl' spacing='xl' align='center'>

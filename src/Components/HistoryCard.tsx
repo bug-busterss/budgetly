@@ -14,7 +14,7 @@ export default function HistoryCard({
 }: {
   activity: Activity;
   token: string;
-  canDelete: boolean;
+  canDelete?: boolean;
 }) {
   const [loading, setLoading] = useState(true);
   const openDeleteModal = () =>

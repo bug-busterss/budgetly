@@ -1,46 +1,40 @@
-import { ActionIcon, Avatar, Badge, Group, Stack, Tabs } from '@mantine/core';
-import {
-  IconBoxMultiple,
-  IconCross,
-  IconMinus,
-  IconMultiplier1x,
-  IconPlus,
-  IconX,
-} from '@tabler/icons';
+import { Button, Group, Stack, Tabs } from '@mantine/core';
+import { IconMinus, IconPlus, IconX } from '@tabler/icons';
 
-export default function Filtermain() {
-  const removeButton = (
-    <ActionIcon size='xs' color='blue' radius='xl' variant='transparent'>
-      <IconX size={10} />
-    </ActionIcon>
-  );
-
+export default function Filtermain({
+  setSelectedFilter,
+}: {
+  setSelectedFilter: (v: string | null) => void;
+}) {
   return (
     <>
       <Group>
         <Stack>
-          <Tabs color='#6E72FC' variant='pills' defaultValue='gallery'>
+          <Tabs color='#6E72FC' variant='pills'>
             <Tabs.List>
-              <Tabs.Tab value='added' icon={<IconPlus size={14} />}>
+              <Tabs.Tab
+                value='efgh'
+                onClick={() => setSelectedFilter('added')}
+                icon={<IconPlus size={14} />}
+              >
                 Added
               </Tabs.Tab>
-              <Tabs.Tab value='deducted' icon={<IconMinus size={14} />}>
+              <Tabs.Tab
+                value='abcd'
+                onClick={() => setSelectedFilter('deducted')}
+                icon={<IconMinus size={14} />}
+              >
                 Deducted
               </Tabs.Tab>
-              <Tabs.Tab value='messages' icon={<IconX size={14} />}>
-                Clear
-              </Tabs.Tab>
             </Tabs.List>
-
-            <Tabs.Panel value='added' pt='xs'>
-              Added tab content
-            </Tabs.Panel>
-
-            <Tabs.Panel value='deducted' pt='xs'>
-              Deducted tab content
-            </Tabs.Panel>
           </Tabs>
         </Stack>
+        <Button
+          leftIcon={<IconX size={14} />}
+          onClick={() => setSelectedFilter(null)}
+        >
+          Clear Filters
+        </Button>
       </Group>
       <Group>
         <Stack></Stack>

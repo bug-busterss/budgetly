@@ -14,19 +14,48 @@ async function fetchActivities(endpoint: string, token: string) {
   return data;
 }
 
-export default function HistoryCardContainer({ token }: { token: string }) {
+export default function HistoryCardContainer({
+  token,
+  selectedFilter,
+}: {
+  token: string;
+  selectedFilter: string | null;
+}) {
   const { data } = useSWR(['activities', token], fetchActivities);
+
   return (
     <>
       {data ? (
-        data?.activities.map((activity, index) => (
-          <HistoryCard
-            token={token}
-            key={activity.id}
-            activity={activity}
-            canDelete={index === 0}
-          />
-        ))
+        selectedFilter === 'added' ? (
+          data?.activities
+            .filter(act => act.isExpense === false)
+            .map((activity, index) => (
+              <HistoryCard
+                token={token}
+                key={activity.id}
+                activity={activity}
+              />
+            ))
+        ) : selectedFilter === 'deducted' ? (
+          data?.activities
+            .filter(act => act.isExpense)
+            .map((activity, index) => (
+              <HistoryCard
+                token={token}
+                key={activity.id}
+                activity={activity}
+              />
+            ))
+        ) : (
+          data?.activities.map((activity, index) => (
+            <HistoryCard
+              token={token}
+              key={activity.id}
+              activity={activity}
+              canDelete={index === 0}
+            />
+          ))
+        )
       ) : (
         <>
           <Card shadow='md' p='lg' radius='lg' withBorder mt='sm'>
