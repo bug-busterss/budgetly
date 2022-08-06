@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -24,7 +24,7 @@ model User {
 
 model Activity {
   id        String   @id @default(cuid())
-  name      String?  @default("Untitled Activity")
+  name      String   @default("Untitled Activity")
   amount    BigInt
   isExpense Boolean
   user      User     @relation(fields: [userId], references: [id])
