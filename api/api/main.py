@@ -5,6 +5,7 @@ from fastapi_login.exceptions import InvalidCredentialsException
 from passlib.hash import bcrypt
 from prisma import Prisma
 from prisma.models import User
+from prisma.types import AtomicBigIntInput
 
 from .loginManager import manager, query_user
 from .models import AddActivity, SignupUser
@@ -39,23 +40,26 @@ async def get_activities(user: User = Depends(manager)):
 
 @app.post("/activities")
 async def add_activity(activity: AddActivity, user: User = Depends(manager)):
+    updated_balance: AtomicBigIntInput = (
+        {"decrement": activity.amount}
+        if activity.isExpense
+        else {"increment": activity.amount}
+    )
     async with Prisma() as db:
         new_activity = await db.activity.create(
             data={
-                "name": activity.name,
+                "name": activity.name
+                if len(activity.name) > 0
+                else "Untitled Activity",
                 "amount": activity.amount,
                 "userId": user.id,
                 "isExpense": activity.isExpense,
             }
         )
-        if activity.isExpense:
-            await db.user.update(
-                where={"id": user.id}, data={"balance": {"decrement": activity.amount}}
-            )
-        else:
-            await db.user.update(
-                where={"id": user.id}, data={"balance": {"increment": activity.amount}}
-            )
+        await db.user.update(
+            where={"id": user.id},
+            data={"balance": updated_balance},
+        )
     return {"activity": new_activity}
 
 
