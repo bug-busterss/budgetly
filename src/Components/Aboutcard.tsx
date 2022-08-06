@@ -6,8 +6,13 @@ import {
   Card,
   Grid,
   Container,
+  Tooltip,
+  ActionIcon,
 } from '@mantine/core';
-import { IconPhoneCall, IconAt } from '@tabler/icons';
+
+import { CopyButton, Button } from '@mantine/core';
+import { IconPhoneCall, IconAt, IconCheck, IconCopy } from '@tabler/icons';
+import Copybtn from './Copybtn';
 
 const useStyles = createStyles(theme => ({
   icon: {
@@ -66,6 +71,7 @@ export function UserInfoIcons({
                       <Text size='xs' color='dimmed'>
                         pateltejash49@gmail.com
                       </Text>
+                      <Copybtn />
                     </Group>
 
                     <Group noWrap spacing={10} mt={5}>
@@ -107,6 +113,7 @@ export function UserInfoIcons({
                       <Text size='xs' color='dimmed'>
                         faizanlal563@gmail.com
                       </Text>
+                      <Copybtn />
                     </Group>
 
                     <Group noWrap spacing={10} mt={5}>
@@ -149,6 +156,7 @@ export function UserInfoIcons({
                       <Text size='xs' color='dimmed'>
                         ui.sabuwala@gmail.com
                       </Text>
+                      <Copybtn />
                     </Group>
 
                     <Group noWrap spacing={10} mt={5}>
@@ -191,6 +199,7 @@ export function UserInfoIcons({
                       <Text size='xs' color='dimmed'>
                         BhaveshPatil8000@gmail.com
                       </Text>
+                      <Copybtn />
                     </Group>
 
                     <Group noWrap spacing={10} mt={5}>
