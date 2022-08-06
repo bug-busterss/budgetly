@@ -37,7 +37,7 @@ export default function HistoryCard({ activity }: { activity: Activity }) {
             : 'rgba(116, 184, 22, .1)',
         }}
       >
-        <Card.Section p='xl'>
+        <Card.Section p='xs'>
           <Group position='apart'>
             <Group position='center' spacing={8}>
               <Text transform='capitalize' size='xl' mr='md'>
