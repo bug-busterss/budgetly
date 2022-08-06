@@ -1,4 +1,4 @@
-import { Button, Card, Group, Title, Tooltip } from '@mantine/core';
+import { Button, Card, Group, Title, Tooltip, Text } from '@mantine/core';
 import { IconMinus, IconPlus } from '@tabler/icons';
 import { useState } from 'react';
 import ExpenseModal from './Modal';
@@ -44,7 +44,14 @@ export default function ExpenseCard({ token }: { token: string }) {
               </Button>
             </Tooltip>
             <div>
-              <Title>₹{!data ? 0 : data.balance}</Title>
+              <Title>
+                <Group>
+                  <Text component='span' weight='lighter' size='xl'>
+                    Balance:
+                  </Text>{' '}
+                  ₹{!data ? 0 : data.balance}
+                </Group>
+              </Title>
             </div>
             {/* DEDUCT BUTTON */}
             <Tooltip

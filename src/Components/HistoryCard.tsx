@@ -44,7 +44,8 @@ export default function HistoryCard({
         p='lg'
         radius='lg'
         withBorder
-        mt='sm'
+        mt='xl'
+        mb={canDelete ? 'xl' : 'sm'}
         sx={{
           // borderWidth: 2,
           // borderColor: 'purple',

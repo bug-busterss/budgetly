@@ -1,5 +1,5 @@
 import { Button, Group, Stack, Tabs } from '@mantine/core';
-import { IconMinus, IconPlus, IconX } from '@tabler/icons';
+import { IconList, IconMinus, IconPlus, IconX } from '@tabler/icons';
 
 export default function Filtermain({
   setSelectedFilter,
@@ -8,19 +8,29 @@ export default function Filtermain({
 }) {
   return (
     <>
-      <Group>
+      <Group mt='xl'>
         <Stack>
-          <Tabs color='#6E72FC' variant='pills'>
+          <Tabs color='#6E72FC' variant='pills' radius='xl' defaultValue='all'>
             <Tabs.List>
               <Tabs.Tab
-                value='efgh'
+                p='md'
+                value='all'
+                onClick={() => setSelectedFilter(null)}
+                icon={<IconList size={14} />}
+              >
+                All
+              </Tabs.Tab>
+              <Tabs.Tab
+                p='md'
+                value='added'
                 onClick={() => setSelectedFilter('added')}
                 icon={<IconPlus size={14} />}
               >
                 Added
               </Tabs.Tab>
               <Tabs.Tab
-                value='abcd'
+                p='md'
+                value='deducted'
                 onClick={() => setSelectedFilter('deducted')}
                 icon={<IconMinus size={14} />}
               >
@@ -29,15 +39,6 @@ export default function Filtermain({
             </Tabs.List>
           </Tabs>
         </Stack>
-        <Button
-          leftIcon={<IconX size={14} />}
-          onClick={() => setSelectedFilter(null)}
-        >
-          Clear Filters
-        </Button>
-      </Group>
-      <Group>
-        <Stack></Stack>
       </Group>
     </>
   );
