@@ -140,16 +140,16 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
 
                   <Menu.Dropdown>
                     <Menu.Label>Application</Menu.Label>
-                    <Menu.Item icon={<IconEdit size={25} />}>
+                    <Menu.Item icon={<IconEdit size={30} />}>
                       Update Profile
                     </Menu.Item>
-                    <Menu.Item icon={<IconSettings size={25} />}>
+                    <Menu.Item icon={<IconSettings size={30} />}>
                       Settings
                     </Menu.Item>
                     <Menu.Divider />
                     <Menu.Item
                       onClick={logoutUser}
-                      icon={<IconLogout size={14} />}
+                      icon={<IconLogout size={35} />}
                     >
                       <UnstyledButton>Logout</UnstyledButton>
                     </Menu.Item>
