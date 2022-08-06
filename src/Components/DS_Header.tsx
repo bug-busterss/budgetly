@@ -143,7 +143,7 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
                       Settings
                     </Menu.Item>
                     <Menu.Divider />
-                    <Menu.Item icon={<IconLogout size={30} />}>
+                    <Menu.Item icon={<IconLogout size={25} />}>
                       <UnstyledButton onClick={logoutUser}>
                         Logout
                       </UnstyledButton>
