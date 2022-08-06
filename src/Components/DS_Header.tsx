@@ -153,6 +153,11 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
                     >
                       <UnstyledButton>Logout</UnstyledButton>
                     </Menu.Item>
+                    <Menu.Item icon={<IconLogout size={25} />}>
+                      <UnstyledButton onClick={logoutUser}>
+                        Logout
+                      </UnstyledButton>
+                    </Menu.Item>
                   </Menu.Dropdown>
                 </Menu>
               </>
