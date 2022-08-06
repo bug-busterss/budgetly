@@ -51,6 +51,7 @@ function ExpenseModal({ opened, isAdd, setOpened, token }: ModalProps) {
               { headers: { Authorization: `Bearer ${token}` } }
             );
             await mutate(['balance', token]);
+            await mutate(['activities', token]);
             form.reset();
             setIsLoading(false);
             setOpened(false);
@@ -68,6 +69,7 @@ function ExpenseModal({ opened, isAdd, setOpened, token }: ModalProps) {
               <FloatingLabelInput
                 label='Amount'
                 isNumber
+                required
                 {...form.getInputProps('amount')}
               />
             </Grid.Col>

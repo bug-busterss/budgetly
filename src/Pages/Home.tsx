@@ -1,6 +1,7 @@
 import { Center, Container, Loader, Title } from '@mantine/core';
 import ExpenseCard from '../Components/Card';
 import HistoryCard from '../Components/HistoryCard';
+import HistoryCardContainer from '../Components/HistoryCardContainer';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Home() {
@@ -18,9 +19,7 @@ export default function Home() {
             <h2>{auth?.user.user?.name}</h2>
             <ExpenseCard token={auth.token} />
             <Title mt='lg'>History</Title>
-            <HistoryCard />
-            <HistoryCard />
-            <HistoryCard />
+            <HistoryCardContainer token={auth.token} />
           </>
         )}
       </Container>

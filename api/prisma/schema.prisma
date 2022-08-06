@@ -23,12 +23,13 @@ model User {
 }
 
 model Activity {
-  id        String  @id @default(cuid())
-  name      String? @default("Untitled Activity")
+  id        String   @id @default(cuid())
+  name      String?  @default("Untitled Activity")
   amount    BigInt
   isExpense Boolean
-  user      User    @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
   userId    String
+  createdAt DateTime @default(now())
 
   @@map("activites")
 }

@@ -5,11 +5,13 @@ import { useFloatingInput } from '../hooks/useFloatingInput';
 interface Props {
   label: string;
   isNumber?: boolean;
+  required?: boolean;
 }
 
 export function FloatingLabelInput({
   label,
   isNumber,
+  required,
   ...inputProps
 }: Props & any) {
   const [focused, setFocused] = useState(false);
@@ -22,7 +24,7 @@ export function FloatingLabelInput({
       {isNumber ? (
         <NumberInput
           label={label}
-          required
+          required={required}
           classNames={classes}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
@@ -34,7 +36,7 @@ export function FloatingLabelInput({
       ) : (
         <TextInput
           label={label}
-          required
+          required={required}
           classNames={classes}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
