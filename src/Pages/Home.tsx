@@ -1,7 +1,9 @@
 import {
+  ActionIcon,
   Anchor,
   Center,
   Container,
+  Group,
   Image,
   Loader,
   Paper,
@@ -13,6 +15,7 @@ import ExpenseCard from '../Components/Card';
 import HistoryCardContainer from '../Components/HistoryCardContainer';
 import { UseAuthReturn } from '../hooks/useAuth';
 import Undraw from 'react-undraw';
+import { IconFilter } from '@tabler/icons';
 
 Undraw.defaultProps.primaryColor = '#862E9C';
 
@@ -29,7 +32,13 @@ export default function Home({ authData }: { authData: UseAuthReturn }) {
             {/* https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=Usman */}
             <h2>{authData.auth?.user.user?.name}</h2>
             <ExpenseCard token={authData.auth.token} />
-            <Title mt='xl'>History</Title>
+            <Group position='apart'>
+              <Title mt='xl'>History</Title>
+              <ActionIcon>
+                <IconFilter size={40} />
+              </ActionIcon>
+            </Group>
+
             <HistoryCardContainer token={authData.auth.token} />
           </>
         ) : (

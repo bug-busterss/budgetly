@@ -19,8 +19,13 @@ export default function HistoryCardContainer({ token }: { token: string }) {
   return (
     <>
       {data ? (
-        data?.activities.map(activity => (
-          <HistoryCard token={token} key={activity.id} activity={activity} />
+        data?.activities.map((activity, index) => (
+          <HistoryCard
+            token={token}
+            key={activity.id}
+            activity={activity}
+            canDelete={index === 0}
+          />
         ))
       ) : (
         <>
