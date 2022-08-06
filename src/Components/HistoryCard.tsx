@@ -20,11 +20,13 @@ export default function HistoryCard({ activity }: { activity: Activity }) {
         withBorder
         mt='sm'
         sx={{
-          borderWidth: 2,
-          borderColor: 'purple',
+          // borderWidth: 2,
+          // borderColor: 'purple',
           borderLeftWidth: 10,
-          borderLeftColor: '#E03131',
-          backgroundColor: 'rgba(255, 0,0, .1)',
+          borderLeftColor: activity.isExpense ? '#E03131' : '#74B816',
+          backgroundColor: activity.isExpense
+            ? 'rgba(255, 0,0, .1)'
+            : 'rgba(116, 184, 22, .1)',
         }}
       >
         <Card.Section p='xl'>
