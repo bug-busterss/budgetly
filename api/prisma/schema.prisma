@@ -16,6 +16,7 @@ model User {
   name     String
   username String     @unique
   password String
+  balance  BigInt     @default(0)
   Activity Activity[]
 
   @@map("users")
