@@ -25,7 +25,7 @@ export default function ExpenseCard({ balance }: { balance: number }) {
               label='Add Money'
               position='right'
               transition='slide-left'
-              transitionDuration={100}
+              transitionDuration={200}
               withArrow
             >
               <Button
@@ -48,7 +48,7 @@ export default function ExpenseCard({ balance }: { balance: number }) {
             <Tooltip
               label='Deduct Money'
               transition='slide-right'
-              transitionDuration={100}
+              transitionDuration={200}
               position='left'
               withArrow
             >
