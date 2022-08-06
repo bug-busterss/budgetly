@@ -18,6 +18,7 @@ import { useFloatingInput } from '../hooks/useFloatingInput';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthInput from '../Components/AuthInput';
+import { IconRegistered, IconUserPlus } from '@tabler/icons';
 
 export function RegisterForm(props: PaperProps) {
   const navigate = useNavigate();
@@ -108,6 +109,7 @@ export function RegisterForm(props: PaperProps) {
                 Already have an account? Login
               </Anchor>
               <Button
+                rightIcon={<IconUserPlus size='18' />}
                 variant='gradient'
                 gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
                 type='submit'
