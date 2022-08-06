@@ -1,16 +1,9 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import {
-  Modal,
-  Button,
-  Group,
-  Grid,
-  useMantineTheme,
-  Title,
-} from '@mantine/core';
+import { Modal, Button, Grid, useMantineTheme } from '@mantine/core';
 import { FloatingLabelInput } from './FloatingInput';
-import { Category } from './Select';
-import { useForm, UseFormReturnType } from '@mantine/form';
+import { useForm } from '@mantine/form';
 import axios from 'axios';
+import { mutate } from 'swr';
 
 type ModalProps = {
   opened: boolean;
@@ -51,13 +44,14 @@ function ExpenseModal({ opened, isAdd, setOpened, token }: ModalProps) {
       >
         <form
           onSubmit={form.onSubmit(async formData => {
-            // console.log({ formData });
             setIsLoading(true);
             const { data } = await axios.post(
               'http://localhost:8000/activities',
               { ...formData, isExpense: !isAdd },
               { headers: { Authorization: `Bearer ${token}` } }
             );
+            await mutate(['balance', token]);
+            form.reset();
             setIsLoading(false);
             setOpened(false);
             console.log(data);

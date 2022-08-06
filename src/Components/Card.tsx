@@ -2,16 +2,20 @@ import { Button, Card, Group, Title, Tooltip } from '@mantine/core';
 import { IconMinus, IconPlus } from '@tabler/icons';
 import { useState } from 'react';
 import ExpenseModal from './Modal';
+import useSWR from 'swr';
+import axios from 'axios';
 
-export default function ExpenseCard({
-  balance,
-  token,
-}: {
-  balance: number;
-  token: string;
-}) {
+async function fetchBalance(endpoint: string, token: string) {
+  const { data } = await axios.get(`http://localhost:8000/${endpoint}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+}
+
+export default function ExpenseCard({ token }: { token: string }) {
   const [opened, setOpened] = useState(false);
   const [isAdd, setIsAdd] = useState(false);
+  const { data } = useSWR(['balance', token], fetchBalance);
 
   return (
     <>
@@ -40,7 +44,7 @@ export default function ExpenseCard({
               </Button>
             </Tooltip>
             <div>
-              <Title>₹{balance}</Title>
+              <Title>₹{!data ? 0 : data.balance}</Title>
             </div>
             {/* DEDUCT BUTTON */}
             <Tooltip
