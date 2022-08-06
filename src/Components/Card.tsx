@@ -1,17 +1,15 @@
-import {
-  Button,
-  Card,
-  Group,
-  Modal,
-  Title,
-  Tooltip,
-  Transition,
-} from '@mantine/core';
-import { IconMinus, IconPlus, IconSwimming } from '@tabler/icons';
+import { Button, Card, Group, Title, Tooltip } from '@mantine/core';
+import { IconMinus, IconPlus } from '@tabler/icons';
 import { useState } from 'react';
 import ExpenseModal from './Modal';
 
-export default function ExpenseCard({ balance }: { balance: number }) {
+export default function ExpenseCard({
+  balance,
+  token,
+}: {
+  balance: number;
+  token: string;
+}) {
   const [opened, setOpened] = useState(false);
   const [isAdd, setIsAdd] = useState(false);
 
@@ -68,7 +66,12 @@ export default function ExpenseCard({ balance }: { balance: number }) {
           </Group>
         </Card.Section>
       </Card>
-      <ExpenseModal opened={opened} setOpened={setOpened} isAdd={isAdd} />
+      <ExpenseModal
+        opened={opened}
+        setOpened={setOpened}
+        isAdd={isAdd}
+        token={token}
+      />
     </>
   );
 }

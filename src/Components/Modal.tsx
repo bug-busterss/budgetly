@@ -9,16 +9,31 @@ import {
 } from '@mantine/core';
 import { FloatingLabelInput } from './FloatingInput';
 import { Category } from './Select';
+import { useForm, UseFormReturnType } from '@mantine/form';
+import axios from 'axios';
 
 type ModalProps = {
   opened: boolean;
   isAdd: boolean;
   setOpened: Dispatch<SetStateAction<boolean>>;
+  token: string;
 };
 
-function ExpenseModal({ opened, isAdd, setOpened }: ModalProps) {
+interface ActivityForm {
+  name?: string;
+  amount: number;
+}
+
+function ExpenseModal({ opened, isAdd, setOpened, token }: ModalProps) {
   const theme = useMantineTheme();
-  const [expense, setexpense] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const form = useForm<ActivityForm>({
+    initialValues: {
+      name: '',
+      amount: 0,
+    },
+  });
+
   return (
     <>
       <Modal
@@ -32,29 +47,53 @@ function ExpenseModal({ opened, isAdd, setOpened }: ModalProps) {
         }
         overlayOpacity={0.55}
         overlayBlur={3}
-        // title='Add Expense'
         title={`${isAdd ? 'Add' : 'Deduct'} Money`}
       >
-        <Grid p='lg'>
-          {/* <Title>Add Expense</Title> */}
-          <Grid.Col>
-            <FloatingLabelInput label='Name' />
-          </Grid.Col>
-          <Grid.Col>
-            <FloatingLabelInput label='Amount' isNumber />
-          </Grid.Col>
-          {/* <Grid.Col>
+        <form
+          onSubmit={form.onSubmit(async formData => {
+            // console.log({ formData });
+            setIsLoading(true);
+            const { data } = await axios.post(
+              'http://localhost:8000/activities',
+              { ...formData, isExpense: !isAdd },
+              { headers: { Authorization: `Bearer ${token}` } }
+            );
+            setIsLoading(false);
+            setOpened(false);
+            console.log(data);
+          })}
+        >
+          <Grid p='lg'>
+            <Grid.Col>
+              <FloatingLabelInput
+                label='Name'
+                {...form.getInputProps('name')}
+              />
+            </Grid.Col>
+            <Grid.Col>
+              <FloatingLabelInput
+                label='Amount'
+                isNumber
+                {...form.getInputProps('amount')}
+              />
+            </Grid.Col>
+            {/* <Grid.Col>
             <Category />
           </Grid.Col> */}
-          <Grid.Col>
-            <Button
-              variant='gradient'
-              gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
-            >
-              {`${isAdd ? 'Add' : 'Deduct'} Money`}
-            </Button>
-          </Grid.Col>
-        </Grid>
+            <Grid.Col>
+              <Button
+                variant='gradient'
+                gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
+                type='submit'
+                fullWidth
+                size='lg'
+                loading={isLoading}
+              >
+                {`${isAdd ? 'Add' : 'Deduct'} Money`}
+              </Button>
+            </Grid.Col>
+          </Grid>
+        </form>
       </Modal>
     </>
   );

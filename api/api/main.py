@@ -32,11 +32,16 @@ app.add_middleware(
 async def add_activity(activity: AddActivity, user: User = Depends(manager)):
     async with Prisma() as db:
         new_activity = await db.activity.create(
-            data={
-                **activity,
-                "userId": user.id,
-            }
+            data={"name": activity.name, "amount": activity.amount, "userId": user.id}
         )
+        if activity.isExpense:
+            await db.user.update(
+                where={"id": user.id}, data={"balance": {"decrement": activity.amount}}
+            )
+        else:
+            await db.user.update(
+                where={"id": user.id}, data={"balance": {"increment": activity.amount}}
+            )
     return {"activity": new_activity}
 
 

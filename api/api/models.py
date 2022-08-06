@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 
 class AddActivity(BaseModel):
+    isExpense: bool
     name: str
     amount: int
 

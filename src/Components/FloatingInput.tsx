@@ -5,13 +5,13 @@ import { useFloatingInput } from '../hooks/useFloatingInput';
 interface Props {
   label: string;
   isNumber?: boolean;
-  formData?: {
-    value: string | number;
-    onChange: (txt?: string | number) => void;
-  };
 }
 
-export function FloatingLabelInput({ label, isNumber, formData }: Props) {
+export function FloatingLabelInput({
+  label,
+  isNumber,
+  ...inputProps
+}: Props & any) {
   const [focused, setFocused] = useState(false);
   const { classes } = useFloatingInput({
     floating: focused,
@@ -28,8 +28,8 @@ export function FloatingLabelInput({ label, isNumber, formData }: Props) {
           onBlur={() => setFocused(false)}
           mt='md'
           autoComplete='nope'
-          value={formData?.value as number}
-          onChange={num => formData?.onChange(num)}
+          size='lg'
+          {...inputProps}
         />
       ) : (
         <TextInput
@@ -38,10 +38,10 @@ export function FloatingLabelInput({ label, isNumber, formData }: Props) {
           classNames={classes}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          value={formData?.value}
-          onChange={e => formData?.onChange(e.target.value)}
           mt='md'
           autoComplete='nope'
+          size='lg'
+          {...inputProps}
         />
       )}
     </>
