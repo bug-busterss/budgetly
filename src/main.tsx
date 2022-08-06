@@ -24,7 +24,17 @@ const Main = () => {
         toggleColorScheme={toggleColorScheme}
       >
         <MantineProvider
-          theme={{ fontFamily: 'Poppins', headings: { fontFamily: 'Poppins' } }}
+          theme={{
+            fontFamily: 'Poppins',
+            headings: { fontFamily: 'Poppins' },
+            components: {
+              Input: {
+                styles: theme => ({
+                  input: { borderColor: theme.colors.gray[6] },
+                }),
+              },
+            },
+          }}
         >
           <ModalsProvider>
             <BrowserRouter>
