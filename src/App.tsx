@@ -8,33 +8,30 @@ import { Contactus } from './Pages/Contactus';
 import Home from './Pages/Home';
 import HistoryCardContainer from './Components/HistoryCardContainer';
 import { useAuth } from './hooks/useAuth';
+import { useEffect } from 'react';
+
+const LINKS = [
+  {
+    label: 'Home',
+    link: '/',
+  },
+  {
+    label: 'Contact Us',
+    link: '/contactus',
+  },
+  {
+    label: 'About',
+    link: '/aboutus',
+  },
+];
 
 function App() {
   const authData = useAuth();
+
   return (
     <div className='App'>
       <AppShell>
-        <HeaderTabsColored
-          authData={authData}
-          links={[
-            {
-              label: 'Home',
-              link: '/',
-            },
-            {
-              label: 'Contact Us',
-              link: '/contactus',
-            },
-            {
-              label: 'About',
-              link: '/aboutus',
-            },
-            {
-              label: 'Signin/Signup',
-              link: '/login',
-            },
-          ]}
-        />
+        <HeaderTabsColored authData={authData} links={LINKS} />
 
         <Routes>
           <Route path='/' element={<Home authData={authData} />} />

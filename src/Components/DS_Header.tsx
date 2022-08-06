@@ -78,23 +78,7 @@ export default function HeaderMenuColored({
 }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
-  const [authLinks, setAuthLinks] = useState(links);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!authData.isLoggedIn) {
-      if (authLinks.at(-1)?.link === '/login') return;
-      setAuthLinks(prevAuthLinks => [
-        ...prevAuthLinks,
-        {
-          label: 'Signin/Signup',
-          link: '/login',
-        },
-      ]);
-      return;
-    }
-    setAuthLinks(authLinks.filter(item => item.link !== '/login'));
-  }, []);
 
   function logoutUser() {
     authData.setAuth(null);
@@ -117,7 +101,7 @@ export default function HeaderMenuColored({
             </Group>
           </UnstyledButton>
           <Group spacing={5} className={classes.links}>
-            {authLinks.map(item => (
+            {links.map(item => (
               <Link
                 key={item.label}
                 to={`${item.link}`}

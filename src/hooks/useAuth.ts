@@ -36,7 +36,6 @@ export const useAuth = (): UseAuthReturn => {
           headers: { Authorization: `Bearer ${auth.token}` },
         });
         setIsLoading(false);
-        if (res.status === 401) return setIsLoggedIn(false);
         setIsLoggedIn(true);
         setAuth(res.data);
       } catch (e) {
@@ -46,6 +45,7 @@ export const useAuth = (): UseAuthReturn => {
         }
       }
     })();
+    console.log({ isLoading, isLoggedIn });
   }, []);
   console.log({ auth });
   return { isLoggedIn, auth, setAuth, isLoading, userLogin };
