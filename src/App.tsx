@@ -6,6 +6,7 @@ import About from './Pages/About';
 import Login from './Pages/Login';
 import { Contactus } from './Pages/Contactus';
 import Home from './Pages/Home';
+import DeleteConfirmation from './Components/DeleteConfirmation';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             },
           ]}
         />
+
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<RegisterForm />} />
