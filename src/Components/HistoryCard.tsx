@@ -34,6 +34,7 @@ export default function HistoryCard({
           { headers: { Authorization: `Bearer ${token}` } }
         );
         await mutate(['activities', token]);
+        await mutate(['balance', token]);
       },
     });
   return (
