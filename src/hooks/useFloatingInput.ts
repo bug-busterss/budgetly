@@ -28,7 +28,7 @@ export const useFloatingInput = createStyles(
 
     required: {
       transition: 'opacity 150ms ease',
-      opacity: floating ? 1 : 0,
+      opacity: floating ? 5 : 0,
     },
 
     input: {
