@@ -17,6 +17,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthInput from '../Components/AuthInput';
 import { getCurentUser } from '../utils/getCurrentUser';
 import { useAuth } from '../hooks/useAuth';
+import { IconLogin } from '@tabler/icons';
 
 export default function Login(props: PaperProps) {
   const { auth, setAuth, isLoading } = useAuth();
@@ -83,6 +84,7 @@ export default function Login(props: PaperProps) {
                 Don't have an account? Register
               </Anchor>
               <Button
+                rightIcon={<IconLogin size='18px' />}
                 variant='gradient'
                 gradient={{ from: '#AD1DEB', to: '#6E72FC' }}
                 type='submit'
