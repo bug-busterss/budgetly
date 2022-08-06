@@ -12,7 +12,6 @@ import {
   Center,
   TextInput,
 } from '@mantine/core';
-import { FloatingLabelInput } from '../Components/FloatingInput';
 import { useState } from 'react';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 import axios from 'axios';
@@ -80,22 +79,6 @@ export function RegisterForm(props: PaperProps) {
                 input={PasswordInput}
                 {...form.getInputProps('password')}
               />
-              {/* <PasswordInput
-                required
-                label='Password'
-                value={form.values.password}
-                onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
-                mt='md'
-                classNames={classes}
-                onChange={event =>
-                  form.setFieldValue('password', event.currentTarget.value)
-                }
-                error={
-                  form.errors.password &&
-                  'Password should include at least 6 characters'
-                }
-              /> */}
             </Stack>
 
             <Group position='apart' mt='xl'>

@@ -1,5 +1,4 @@
 import { AppShell } from '@mantine/core';
-import React from 'react';
 import { UserInfoIcons } from '../Components/Aboutcard';
 
 const About = () => {

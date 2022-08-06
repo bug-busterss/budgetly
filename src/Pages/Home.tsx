@@ -1,6 +1,5 @@
 import { Center, Container, Loader, Title } from '@mantine/core';
 import ExpenseCard from '../Components/Card';
-import HistoryCard from '../Components/HistoryCard';
 import HistoryCardContainer from '../Components/HistoryCardContainer';
 import { useAuth } from '../hooks/useAuth';
 
@@ -15,7 +14,6 @@ export default function Home() {
           </Center>
         ) : (
           <>
-            {/* https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=Usman */}
             <h2>{auth?.user.user?.name}</h2>
             <ExpenseCard token={auth.token} />
             <Title mt='lg'>History</Title>
