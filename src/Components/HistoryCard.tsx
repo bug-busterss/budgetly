@@ -4,7 +4,7 @@ import { format } from 'timeago.js';
 import { IconTrash } from '@tabler/icons';
 import { useState } from 'react';
 
-export default function HistoryCard({ activity }: { activity?: Activity }) {
+export default function HistoryCard({ activity }: { activity: Activity }) {
   const [loading, setLoading] = useState(true);
   return (
     <div>
@@ -28,14 +28,14 @@ export default function HistoryCard({ activity }: { activity?: Activity }) {
           <Group position='apart'>
             <Group position='center' spacing={8}>
               <Text transform='capitalize' size='xl' mr='md'>
-                {activity!.name}
+                {activity.name}
               </Text>
               <Text size='xl' weight={700}>
-                ₹{activity!.amount}
+                ₹{activity.amount}
               </Text>
             </Group>
             <Group>
-              <Text size='xl'>{format(activity!.createdAt)}</Text>
+              <Text size='xl'>{format(activity.createdAt)}</Text>
 
               <ActionIcon
                 variant='transparent'

@@ -55,7 +55,7 @@ const useStyles = createStyles(theme => ({
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: '#AE3EC9',
+      backgroundColor: '#6e40ff',
     },
   },
 
@@ -106,17 +106,13 @@ export default function HeaderMenuColored({
       <Container fluid>
         <div className={classes.inner}>
           <Group>
-            <UnstyledButton component={Link} to='/'>
-              <Group>
-                <Image
-                  src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
-                  width={40}
-                />
-                <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
-                  Budgetly
-                </Title>
-              </Group>
-            </UnstyledButton>
+            <Image
+              src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
+              width={40}
+            />
+            <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
+              Budgetly
+            </Title>
           </Group>
           <Group spacing={5} className={classes.links}>
             {authLinks.map(item => (
@@ -149,11 +145,10 @@ export default function HeaderMenuColored({
                       Settings
                     </Menu.Item>
                     <Menu.Divider />
-                    <Menu.Item
-                      onClick={logoutUser}
-                      icon={<IconLogout size={14} />}
-                    >
-                      <UnstyledButton>Logout</UnstyledButton>
+                    <Menu.Item icon={<IconLogout size={25} />}>
+                      <UnstyledButton onClick={logoutUser}>
+                        Logout
+                      </UnstyledButton>
                     </Menu.Item>
                   </Menu.Dropdown>
                 </Menu>

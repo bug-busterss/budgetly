@@ -6,11 +6,8 @@ import {
   Card,
   Grid,
   Container,
-  Tooltip,
-  ActionIcon,
 } from '@mantine/core';
 
-import { CopyButton, Button } from '@mantine/core';
 import { IconPhoneCall, IconAt, IconCheck, IconCopy } from '@tabler/icons';
 import Copybtn from './Copybtn';
 
