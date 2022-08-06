@@ -2,6 +2,7 @@ import HistoryCard from './HistoryCard';
 import useSWR from 'swr';
 import axios from 'axios';
 import { Activity } from '../types';
+import { Loader } from '@mantine/core';
 
 async function fetchActivities(endpoint: string, token: string) {
   const { data } = await axios.get<{ activities: Activity[] }>(
@@ -17,10 +18,13 @@ export default function HistoryCardContainer({ token }: { token: string }) {
   const { data } = useSWR(['activities', token], fetchActivities);
   return (
     <>
-      {data &&
+      {data ? (
         data.activities.map(activity => (
           <HistoryCard key={activity.id} activity={activity} />
-        ))}
+        ))
+      ) : (
+        <Loader color='grape' size='xl' variant='dots' />
+      )}
     </>
   );
 }
