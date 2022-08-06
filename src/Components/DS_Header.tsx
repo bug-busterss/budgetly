@@ -56,7 +56,7 @@ const useStyles = createStyles(theme => ({
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: '#AE3EC9',
+      backgroundColor: '#6e40ff',
     },
   },
 
