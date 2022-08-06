@@ -14,7 +14,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconLogout, IconSettings } from '@tabler/icons';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { UseAuthReturn } from '../hooks/useAuth';
 
 const useStyles = createStyles(theme => ({
   header: {
@@ -69,17 +69,20 @@ interface HeaderSearchProps {
     link: string;
     label: string;
   }[];
+  authData: UseAuthReturn;
 }
 
-export default function HeaderMenuColored({ links }: HeaderSearchProps) {
+export default function HeaderMenuColored({
+  links,
+  authData,
+}: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
-  const { auth, setAuth, isLoading } = useAuth();
   const [authLinks, setAuthLinks] = useState(links);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!auth) {
+    if (!authData.isLoggedIn) {
       if (authLinks.at(-1)?.link === '/login') return;
       setAuthLinks(prevAuthLinks => [
         ...prevAuthLinks,
@@ -94,7 +97,7 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
   }, []);
 
   function logoutUser() {
-    setAuth(null);
+    authData.setAuth(null);
     navigate('/login');
   }
 
@@ -102,15 +105,17 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
     <Header height={76} className={classes.header} mb={120} p='10px'>
       <Container fluid>
         <div className={classes.inner}>
-          <Group>
-            <Image
-              src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
-              width={40}
-            />
-            <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
-              Budgetly
-            </Title>
-          </Group>
+          <UnstyledButton component={Link} to='/'>
+            <Group>
+              <Image
+                src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
+                width={40}
+              />
+              <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
+                Budgetly
+              </Title>
+            </Group>
+          </UnstyledButton>
           <Group spacing={5} className={classes.links}>
             {authLinks.map(item => (
               <Link
@@ -121,13 +126,13 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
                 {`${item.label}`}
               </Link>
             ))}
-            {auth !== null && (
+            {authData.isLoggedIn && (
               <>
                 <Menu shadow='md' width={400}>
                   <Menu.Target>
                     <UnstyledButton>
                       <Avatar
-                        src={`https://avatars.dicebear.com/api/initials/${auth?.user?.name}.svg`}
+                        src={`https://avatars.dicebear.com/api/initials/${authData.auth?.user?.name}.svg`}
                         radius='xl'
                       />
                     </UnstyledButton>

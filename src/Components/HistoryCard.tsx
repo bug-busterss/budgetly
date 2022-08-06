@@ -3,9 +3,22 @@ import { Activity } from '../types';
 import { format } from 'timeago.js';
 import { IconTrash } from '@tabler/icons';
 import { useState } from 'react';
+import { openConfirmModal } from '@mantine/modals';
 
 export default function HistoryCard({ activity }: { activity: Activity }) {
   const [loading, setLoading] = useState(true);
+  const openDeleteModal = () =>
+    openConfirmModal({
+      title: 'Delete Activity',
+      centered: true,
+      children: (
+        <Text size='sm'> Are You Certain That You Want to Remove It?</Text>
+      ),
+      labels: { confirm: 'Delete', cancel: 'Cancel' },
+      confirmProps: { color: 'red' },
+      onCancel: () => console.log('Cancel'),
+      onConfirm: () => console.log('Confirmed'),
+    });
   return (
     <div>
       <Card
@@ -24,7 +37,7 @@ export default function HistoryCard({ activity }: { activity: Activity }) {
             : 'rgba(116, 184, 22, .1)',
         }}
       >
-        <Card.Section p='xl'>
+        <Card.Section p='xs'>
           <Group position='apart'>
             <Group position='center' spacing={8}>
               <Text transform='capitalize' size='xl' mr='md'>
@@ -41,6 +54,7 @@ export default function HistoryCard({ activity }: { activity: Activity }) {
                 variant='transparent'
                 size='xl'
                 radius='xl'
+                onClick={openDeleteModal}
                 sx={{
                   ':hover': {
                     background: 'rgba(255, 0, 0, 0.7)',

@@ -104,7 +104,7 @@ const useStyles = createStyles(theme => {
   };
 });
 
-export function Contactus() {
+export function Contactform() {
   const { classes } = useStyles();
 
   return (
