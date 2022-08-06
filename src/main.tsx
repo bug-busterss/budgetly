@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import useGoogleFonts from 'use-google-fonts';
 import './index.css';
+import { ModalsProvider } from '@mantine/modals';
 
 const Main = () => {
   useGoogleFonts([['Poppins', '500']]);
@@ -25,9 +26,11 @@ const Main = () => {
         <MantineProvider
           theme={{ fontFamily: 'Poppins', headings: { fontFamily: 'Poppins' } }}
         >
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <ModalsProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </ModalsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </React.StrictMode>
