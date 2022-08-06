@@ -1,5 +1,5 @@
 import { TextInputProps } from '@mantine/core';
-import { ChangeEvent, FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 
 interface Props {
@@ -22,6 +22,7 @@ export default function AuthInput({
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       mt='md'
+      size='lg'
       {...formProps}
     />
   );

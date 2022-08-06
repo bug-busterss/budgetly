@@ -10,12 +10,14 @@ import {
   Stack,
   Container,
   Center,
+  TextInput,
 } from '@mantine/core';
 import { FloatingLabelInput } from '../Components/FloatingInput';
 import { useState } from 'react';
 import { useFloatingInput } from '../hooks/useFloatingInput';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import AuthInput from '../Components/AuthInput';
 
 export function RegisterForm(props: PaperProps) {
   const navigate = useNavigate();
@@ -62,27 +64,22 @@ export function RegisterForm(props: PaperProps) {
             })}
           >
             <Stack mt='xl'>
-              <FloatingLabelInput
+              <AuthInput
                 label='Name'
-                formData={{
-                  value: form.values.name,
-                  onChange(txt?) {
-                    form.setFieldValue('name', txt as string);
-                  },
-                }}
+                input={TextInput}
+                {...form.getInputProps('name')}
               />
-
-              <FloatingLabelInput
+              <AuthInput
                 label='Username'
-                formData={{
-                  value: form.values.username,
-                  onChange(txt?) {
-                    form.setFieldValue('username', txt as string);
-                  },
-                }}
+                input={TextInput}
+                {...form.getInputProps('username')}
               />
-
-              <PasswordInput
+              <AuthInput
+                label='Password'
+                input={PasswordInput}
+                {...form.getInputProps('password')}
+              />
+              {/* <PasswordInput
                 required
                 label='Password'
                 value={form.values.password}
@@ -97,7 +94,7 @@ export function RegisterForm(props: PaperProps) {
                   form.errors.password &&
                   'Password should include at least 6 characters'
                 }
-              />
+              /> */}
             </Stack>
 
             <Group position='apart' mt='xl'>
