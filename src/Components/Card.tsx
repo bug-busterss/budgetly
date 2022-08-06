@@ -1,4 +1,12 @@
-import { Button, Card, Group, Modal, Title, Tooltip } from '@mantine/core';
+import {
+  Button,
+  Card,
+  Group,
+  Modal,
+  Title,
+  Tooltip,
+  Transition,
+} from '@mantine/core';
 import { IconMinus, IconPlus, IconSwimming } from '@tabler/icons';
 import { useState } from 'react';
 import Demo from './Modal';
@@ -13,7 +21,13 @@ export default function ExpenseCard({ balance }: { balance: number }) {
         <Card.Section>
           <Group position='apart' p='20px'>
             {/* ADD BUTTON */}
-            <Tooltip label='Add Money' position='right' withArrow>
+            <Tooltip
+              label='Add Money'
+              position='right'
+              transition='slide-left'
+              transitionDuration={100}
+              withArrow
+            >
               <Button
                 styles={{ root: { width: '4rem', height: '4rem' } }}
                 variant='gradient'
@@ -31,7 +45,13 @@ export default function ExpenseCard({ balance }: { balance: number }) {
               <Title>₹{balance}</Title>
             </div>
             {/* DEDUCT BUTTON */}
-            <Tooltip label='Deduct Money' position='left' withArrow>
+            <Tooltip
+              label='Deduct Money'
+              transition='slide-right'
+              transitionDuration={100}
+              position='left'
+              withArrow
+            >
               <Button
                 styles={{ root: { width: '4rem', height: '4rem' } }}
                 variant='gradient'
