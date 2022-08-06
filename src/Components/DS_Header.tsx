@@ -18,7 +18,10 @@ import { useAuth } from '../hooks/useAuth';
 
 const useStyles = createStyles(theme => ({
   header: {
-    backgroundColor: '#862E9C',
+    background: theme.fn.variant({
+      variant: 'gradient',
+      gradient: { from: '#AD1DEB', to: '#6E72FC' },
+    }).background,
     borderBottom: 0,
   },
 
@@ -160,5 +163,12 @@ function toggleColorScheme(value: string): void {
 }
 
 function setUserMenuOpened(arg0: boolean): void {
+  throw new Error('Function not implemented.');
+}
+function borderBottom(
+  arg0: (theme: import('@mantine/core').MantineTheme) => any,
+  borderBottom: any,
+  arg2: number
+) {
   throw new Error('Function not implemented.');
 }
