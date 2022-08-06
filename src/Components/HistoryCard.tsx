@@ -29,8 +29,14 @@ export default function HistoryCard({ activity }: { activity: Activity }) {
 
               <ActionIcon
                 variant='transparent'
-                color='red'
-                // sx={{ '&[data-loading]': { backgroundColor: 'red' } }}
+                size='xl'
+                radius='xl'
+                sx={{
+                  ':hover': {
+                    background: 'rgba(255, 0, 0, 0.7)',
+                    color: 'azure',
+                  },
+                }}
               >
                 <IconTrash />
               </ActionIcon>
