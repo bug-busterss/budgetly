@@ -13,7 +13,20 @@ import { IconTrash } from '@tabler/icons';
 export default function HistoryCard({ activity }: { activity: Activity }) {
   return (
     <div>
-      <Card shadow='md' p='lg' radius='lg' withBorder mt='sm'>
+      <Card
+        shadow='xl'
+        p='lg'
+        radius='lg'
+        withBorder
+        mt='sm'
+        sx={{
+          borderWidth: 2,
+          borderColor: 'purple',
+          borderLeftWidth: 10,
+          borderLeftColor: '#E03131',
+          backgroundColor: 'rgba(255, 0,0, .1)',
+        }}
+      >
         <Card.Section p='xl'>
           <Group position='apart'>
             <Group position='center' spacing={8}>
