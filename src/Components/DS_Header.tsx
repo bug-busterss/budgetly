@@ -8,6 +8,7 @@ import {
   Title,
   Avatar,
   UnstyledButton,
+  Image,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconLogout, IconSettings } from '@tabler/icons';
@@ -102,9 +103,15 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
     <Header height={76} className={classes.header} mb={120} p='10px'>
       <Container fluid>
         <div className={classes.inner}>
-          <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
-            Budgetly
-          </Title>
+          <Group>
+            <Image
+              src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
+              width={40}
+            />
+            <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
+              Budgetly
+            </Title>
+          </Group>
           <Group spacing={5} className={classes.links}>
             {authLinks.map(item => (
               <Link
