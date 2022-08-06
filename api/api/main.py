@@ -45,6 +45,13 @@ async def add_activity(activity: AddActivity, user: User = Depends(manager)):
     return {"activity": new_activity}
 
 
+@app.get("/balance")
+async def get_balance(user: User = Depends(manager)):
+    async with Prisma() as db:
+        user = await db.user.find_unique(where={"id": user.id})
+    return {"balance": user.balance}
+
+
 @app.get("/users/me")
 async def get_user(request: Request):
     token = await manager._get_token(request)

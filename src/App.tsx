@@ -1,4 +1,4 @@
-import { AppShell, Container, Title } from '@mantine/core';
+import { AppShell } from '@mantine/core';
 import HeaderTabsColored from './Components/DS_Header';
 import { Route, Routes } from 'react-router-dom';
 import { RegisterForm } from './Pages/Register';
