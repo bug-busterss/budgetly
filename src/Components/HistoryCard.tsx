@@ -8,7 +8,22 @@ export default function HistoryCard({ activity }: { activity?: Activity }) {
   const [loading, setLoading] = useState(true);
   return (
     <div>
-      <Card shadow='md' p='lg' radius='lg' withBorder mt='sm'>
+      <Card
+        shadow='xl'
+        p='lg'
+        radius='lg'
+        withBorder
+        mt='sm'
+        sx={{
+          // borderWidth: 2,
+          // borderColor: 'purple',
+          borderLeftWidth: 10,
+          borderLeftColor: activity.isExpense ? '#E03131' : '#74B816',
+          backgroundColor: activity.isExpense
+            ? 'rgba(255, 0,0, .1)'
+            : 'rgba(116, 184, 22, .1)',
+        }}
+      >
         <Card.Section p='xl'>
           <Group position='apart'>
             <Group position='center' spacing={8}>
@@ -24,8 +39,14 @@ export default function HistoryCard({ activity }: { activity?: Activity }) {
 
               <ActionIcon
                 variant='transparent'
-                color='red'
-                // sx={{ '&[data-loading]': { backgroundColor: 'red' } }}
+                size='xl'
+                radius='xl'
+                sx={{
+                  ':hover': {
+                    background: 'rgba(255, 0, 0, 0.7)',
+                    color: 'azure',
+                  },
+                }}
               >
                 <IconTrash />
               </ActionIcon>

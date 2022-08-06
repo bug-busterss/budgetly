@@ -124,7 +124,7 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
             ))}
             {auth !== null && (
               <>
-                <Menu shadow='md' width={200}>
+                <Menu shadow='md' width={400}>
                   <Menu.Target>
                     <UnstyledButton>
                       <Avatar
@@ -136,10 +136,10 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
 
                   <Menu.Dropdown>
                     <Menu.Label>Application</Menu.Label>
-                    <Menu.Item icon={<IconEdit size={14} />}>
+                    <Menu.Item icon={<IconEdit size={25} />}>
                       Update Profile
                     </Menu.Item>
-                    <Menu.Item icon={<IconSettings size={14} />}>
+                    <Menu.Item icon={<IconSettings size={25} />}>
                       Settings
                     </Menu.Item>
                     <Menu.Divider />
