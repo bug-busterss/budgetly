@@ -104,13 +104,17 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
       <Container fluid>
         <div className={classes.inner}>
           <Group>
-            <Image
-              src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
-              width={40}
-            />
-            <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
-              Budgetly
-            </Title>
+            <UnstyledButton component={Link} to='/'>
+              <Group>
+                <Image
+                  src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/banknote-with-dollar-sign_1f4b5.png'
+                  width={40}
+                />
+                <Title style={{ fontFamily: 'Poppins', color: 'white' }}>
+                  Budgetly
+                </Title>
+              </Group>
+            </UnstyledButton>
           </Group>
           <Group spacing={5} className={classes.links}>
             {authLinks.map(item => (
