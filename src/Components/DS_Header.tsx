@@ -81,6 +81,7 @@ export default function HeaderMenuColored({
   const navigate = useNavigate();
 
   function logoutUser() {
+    authData.userLogout();
     authData.setAuth(null);
     navigate('/login');
   }

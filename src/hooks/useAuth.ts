@@ -7,6 +7,7 @@ export interface UseAuthReturn {
   auth: any;
   setAuth: (val: any) => void;
   userLogin: VoidFunction;
+  userLogout: VoidFunction;
   isLoading: boolean;
   isLoggedIn: boolean;
 }
@@ -27,9 +28,14 @@ export const useAuth = (): UseAuthReturn => {
     setIsLoggedIn(true);
   }
 
+  function userLogout() {
+    setIsLoading(false);
+    setIsLoggedIn(false);
+  }
+
   useEffect(() => {
     (async () => {
-      if (!auth) return null;
+      if (!auth) return userLogout();
       setIsLoading(true);
       try {
         const res = await axios.get('http://localhost:8000/users/me', {
@@ -39,14 +45,11 @@ export const useAuth = (): UseAuthReturn => {
         setIsLoggedIn(true);
         setAuth(res.data);
       } catch (e) {
-        if (e instanceof AxiosError) {
-          setIsLoading(false);
-          setIsLoggedIn(false);
-        }
+        userLogout();
       }
     })();
     console.log({ isLoading, isLoggedIn });
   }, []);
   console.log({ auth });
-  return { isLoggedIn, auth, setAuth, isLoading, userLogin };
+  return { isLoggedIn, auth, setAuth, isLoading, userLogin, userLogout };
 };
