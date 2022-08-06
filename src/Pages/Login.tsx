@@ -16,11 +16,10 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthInput from '../Components/AuthInput';
 import { getCurentUser } from '../utils/getCurrentUser';
-import { useAuth } from '../hooks/useAuth';
 import { IconLogin } from '@tabler/icons';
+import { UseAuthReturn } from '../hooks/useAuth';
 
-export default function Login(props: PaperProps) {
-  const { auth, setAuth, isLoading } = useAuth();
+export default function Login({ authData }: { authData: UseAuthReturn }) {
   const navigate = useNavigate();
 
   const form = useForm({
@@ -40,7 +39,7 @@ export default function Login(props: PaperProps) {
   return (
     <Container>
       <Center>
-        <Paper radius='md' p='xl' withBorder {...props}>
+        <Paper radius='md' p='xl' withBorder>
           <Text size='lg' weight={500}>
             Welcome back to Budgetly
           </Text>
@@ -55,7 +54,8 @@ export default function Login(props: PaperProps) {
                 }
               );
               const user = await getCurentUser(data['access_token']);
-              setAuth(user);
+              // localStorage.setItem('user', JSON.stringify(user));
+              authData.setAuth(user);
               navigate('/');
             })}
           >

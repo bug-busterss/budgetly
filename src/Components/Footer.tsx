@@ -1,15 +1,5 @@
-import {
-  createStyles,
-  Container,
-  Group,
-  ActionIcon,
-  Title,
-} from '@mantine/core';
-import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
-} from '@tabler/icons';
+import { createStyles, Container, Group, Anchor } from '@mantine/core';
+import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles(theme => ({
   footer: {
@@ -38,24 +28,29 @@ const useStyles = createStyles(theme => ({
   },
 }));
 
-export function Footer() {
+interface FooterSimpleProps {
+  links: { link: string; label: string }[];
+}
+
+export default function FooterSimple({ links }: FooterSimpleProps) {
   const { classes } = useStyles();
+  const items = links.map(link => (
+    <Anchor<'a'>
+      color='dimmed'
+      key={link.label}
+      href={link.link}
+      onClick={event => event.preventDefault()}
+      size='sm'
+    >
+      {link.label}
+    </Anchor>
+  ));
 
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <Group spacing={0} className={classes.links} position='right' noWrap>
-          <Title>Budgetly</Title>
-          <ActionIcon size={40}>
-            <IconBrandTwitter size={30} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size={30}>
-            <IconBrandYoutube size={30} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size={30}>
-            <IconBrandInstagram size={30} stroke={1.5} />
-          </ActionIcon>
-        </Group>
+        <MantineLogo size={28} />
+        <Group className={classes.links}>{items}</Group>
       </Container>
     </div>
   );
