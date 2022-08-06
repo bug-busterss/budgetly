@@ -3,31 +3,14 @@ import {
   Header,
   Menu,
   Group,
-  Center,
   Burger,
   Container,
   Title,
-  MantineProvider,
-  SegmentedControl,
-  Box,
-  useMantineColorScheme,
   Avatar,
-  Button,
-  Text,
-  Anchor,
   UnstyledButton,
 } from '@mantine/core';
-import { defaultFilter } from '@mantine/core/lib/TransferList/TransferList';
 import { useDisclosure } from '@mantine/hooks';
-import {
-  IconChevronDown,
-  IconLogout,
-  IconMoon,
-  IconSettings,
-  IconSun,
-  IconSwitchHorizontal,
-  IconTrash,
-} from '@tabler/icons';
+import { IconEdit, IconLogout, IconSettings } from '@tabler/icons';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -131,13 +114,32 @@ export default function HeaderMenuColored({ links }: HeaderSearchProps) {
             ))}
             {auth !== null && (
               <>
-                <UnstyledButton className={classes.link} onClick={logoutUser}>
-                  Logout
-                </UnstyledButton>
-                <Avatar
-                  src={`https://avatars.dicebear.com/api/initials/${auth?.user?.name}.svg`}
-                  radius='xl'
-                />
+                <Menu shadow='md' width={200}>
+                  <Menu.Target>
+                    <UnstyledButton>
+                      <Avatar
+                        src={`https://avatars.dicebear.com/api/initials/${auth?.user?.name}.svg`}
+                        radius='xl'
+                      />
+                    </UnstyledButton>
+                  </Menu.Target>
+
+                  <Menu.Dropdown>
+                    <Menu.Label>Application</Menu.Label>
+                    <Menu.Item icon={<IconEdit size={14} />}>
+                      Update Profile
+                    </Menu.Item>
+                    <Menu.Item icon={<IconSettings size={14} />}>
+                      Settings
+                    </Menu.Item>
+                    <Menu.Divider />
+                    <Menu.Item icon={<IconLogout size={14} />}>
+                      <UnstyledButton onClick={logoutUser}>
+                        Logout
+                      </UnstyledButton>
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                </Menu>
               </>
             )}
           </Group>
