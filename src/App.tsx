@@ -6,7 +6,6 @@ import About from './Pages/About';
 import Login from './Pages/Login';
 import { Contactus } from './Pages/Contactus';
 import Home from './Pages/Home';
-import DeleteConfirmation from './Components/DeleteConfirmation';
 import HistoryCardContainer from './Components/HistoryCardContainer';
 import { useAuth } from './hooks/useAuth';
 
