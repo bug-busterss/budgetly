@@ -55,6 +55,7 @@ export default function Login({ authData }: { authData: UseAuthReturn }) {
               );
               const user = await getCurentUser(data['access_token']);
               // localStorage.setItem('user', JSON.stringify(user));
+              authData.userLogin();
               authData.setAuth(user);
               navigate('/');
             })}

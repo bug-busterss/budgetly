@@ -6,6 +6,7 @@ import superjson from 'superjson';
 export interface UseAuthReturn {
   auth: any;
   setAuth: (val: any) => void;
+  userLogin: VoidFunction;
   isLoading: boolean;
   isLoggedIn: boolean;
 }
@@ -20,6 +21,12 @@ export const useAuth = (): UseAuthReturn => {
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  function userLogin() {
+    setIsLoading(false);
+    setIsLoggedIn(true);
+  }
+
   useEffect(() => {
     (async () => {
       if (!auth) return null;
@@ -41,5 +48,5 @@ export const useAuth = (): UseAuthReturn => {
     })();
   }, []);
   console.log({ auth });
-  return { isLoggedIn, auth, setAuth, isLoading };
+  return { isLoggedIn, auth, setAuth, isLoading, userLogin };
 };
