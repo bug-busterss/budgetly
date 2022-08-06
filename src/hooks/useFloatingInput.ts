@@ -18,7 +18,7 @@ export const useFloatingInput = createStyles(
           : theme.black
         : theme.colorScheme === 'dark'
         ? theme.colors.dark[3]
-        : theme.colors.gray[5],
+        : theme.colors.gray[7],
       transition:
         'transform 150ms ease, color 150ms ease, font-size 150ms ease',
       transform: floating ? `translate(-${theme.spacing.sm}px, -28px)` : 'none',
